@@ -3,6 +3,7 @@ import logging
 from django.contrib import messages
 from django.shortcuts import redirect, render
 from rest_framework import status
+from rest_framework.permissions import AllowAny
 from rest_framework.generics import CreateAPIView, ListAPIView
 from rest_framework.response import Response
 
@@ -53,6 +54,8 @@ def contacto_view(request):
 class CrearMensajeContactoView(CreateAPIView):
     queryset = MensajeContacto.objects.all()
     serializer_class = MensajeContactoSerializer
+    permission_classes = [AllowAny]
+    authentication_classes = []
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
