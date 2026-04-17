@@ -99,7 +99,7 @@
           )}
         </div>
 
-        <div className="mt-16 rounded-[2.5rem] border border-slate-800 bg-gradient-to-br from-slate-900 to-slate-950 px-6 py-16 text-center shadow-xl">
+        <div className="mt-20 rounded-[2.5rem] border border-slate-800 bg-gradient-to-br from-slate-900 to-slate-950 px-6 py-20 text-center shadow-xl">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-slate-400">
             ¿Qué esperas?
           </p>
@@ -108,13 +108,13 @@
             ¿Necesitas una web profesional?
           </h4>
 
-          <p className="mx-auto mt-4 max-w-xl text-sm text-slate-400 md:text-base">
+          <p className="mx-auto mt-4 max-w-lg text-sm text-slate-400 md:text-base">
             Creamos soluciones modernas, rápidas y administrables para que tu negocio crezca y capte clientes.
           </p>
 
           <a
             href="/contacto"
-            className="mt-8 inline-flex items-center justify-center rounded-full bg-white px-8 py-4 text-base font-semibold text-slate-950 transition hover:bg-slate-200"
+            className="mt-8 inline-flex items-center justify-center rounded-full bg-white px-10 py-4 text-lg font-semibold text-slate-950 transition hover:bg-slate-200"
           >
             Solicita tu cotización →
           </a>
