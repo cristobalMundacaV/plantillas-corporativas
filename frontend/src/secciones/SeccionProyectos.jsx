@@ -47,7 +47,7 @@ function SeccionProyectos() {
         <TituloSeccion
           subtitulo="Proyectos"
           titulo="Resultados reales que reflejan nuestra forma de trabajar"
-          descripcion="Mostramos proyectos destacados con una vista clara del tipo de solucion, stack utilizado y detalle de cada entrega."
+          descripcion="Explora algunos de los proyectos desarrollados, donde aplicamos diseño moderno, rendimiento y soluciones pensadas para cada tipo de negocio."
         />
 
         {cargando && (
