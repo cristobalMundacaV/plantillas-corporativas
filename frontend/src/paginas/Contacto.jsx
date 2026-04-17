@@ -133,7 +133,7 @@ function Contacto() {
 
             <div className="mt-8 rounded-[2rem] border border-slate-200 bg-white p-8 shadow-xl sm:mt-10 md:mt-0 md:p-10">
             <h3 className="text-2xl font-bold text-slate-900">
-                Envíanos un mensaje
+                ¿Listo para el primer paso?
             </h3>
 
             <p className="mt-3 text-base leading-7 text-slate-600">
