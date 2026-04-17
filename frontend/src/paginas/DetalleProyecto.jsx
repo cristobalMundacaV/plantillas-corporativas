@@ -111,14 +111,14 @@ function DetalleProyecto() {
 
             {urlImagen && (
               <div className="relative flex justify-end">
-                <div className="relative w-[120%] max-w-none translate-x-10 md:translate-x-16">
-                  <div className="absolute -inset-4 rounded-3xl bg-gradient-to-r from-cyan-500/30 to-blue-600/30 blur-2xl opacity-70"></div>
+                <div className="relative w-[115%] max-w-none translate-x-8 md:translate-x-12">
+                  <div className="absolute -inset-4 rounded-3xl bg-gradient-to-r from-cyan-500/25 to-blue-600/25 blur-2xl opacity-70"></div>
 
                   <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/10 shadow-[0_30px_80px_rgba(0,0,0,0.8)]">
                     <img
                       src={urlImagen}
                       alt={proyecto.titulo}
-                      className="h-[300px] w-full object-cover brightness-110 contrast-110 md:h-[400px]"
+                      className="h-auto w-full object-contain brightness-110 contrast-110"
                     />
                   </div>
                 </div>
