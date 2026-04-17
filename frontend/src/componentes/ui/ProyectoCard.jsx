@@ -85,13 +85,6 @@ function ProyectoCard({ proyecto }) {
             Ver detalles
           </Link>
 
-          <Link
-            to={`/proyectos/${proyecto.slug}`}
-            className="text-sm font-semibold text-slate-900 transition hover:text-slate-600"
-          >
-            Conocer mas {'->'}
-          </Link>
-
           {proyecto.url_proyecto && (
             <a
               href={proyecto.url_proyecto}
