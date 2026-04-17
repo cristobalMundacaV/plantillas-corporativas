@@ -1,11 +1,10 @@
 import { useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { ArrowUpRight, Expand, Layers3 } from 'lucide-react';
 import ModalImagen from '../common/ModalImagen';
 import { getMediaUrl } from '../../utils/media';
 
 function ProyectoCard({ proyecto }) {
-  const [modalDetalleAbierto, setModalDetalleAbierto] = useState(false);
   const [modalImagenAbierta, setModalImagenAbierta] = useState(false);
 
   const urlImagenTrabajo = getMediaUrl(proyecto?.imagen);
@@ -73,14 +72,6 @@ function ProyectoCard({ proyecto }) {
         )}
 
         <div className="mt-auto flex flex-wrap gap-3">
-          <button
-            type="button"
-            onClick={() => setModalDetalleAbierto(true)}
-            className="inline-flex items-center justify-center rounded-full bg-slate-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-800"
-          >
-            Ver detalle
-          </button>
-
           {proyecto.url_proyecto && (
             <a
               href={proyecto.url_proyecto}
@@ -102,93 +93,6 @@ function ProyectoCard({ proyecto }) {
         onClose={() => setModalImagenAbierta(false)}
         layoutId={layoutIdImagen}
       />
-
-      <AnimatePresence>
-        {modalDetalleAbierto && (
-          <motion.div
-            className="fixed inset-0 z-[9999] bg-slate-950/70 backdrop-blur-sm"
-            onClick={() => setModalDetalleAbierto(false)}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-          >
-            <div className="flex min-h-full items-center justify-center p-4 md:p-8">
-              <motion.div
-                className="w-full max-w-4xl overflow-hidden rounded-[2rem] bg-white shadow-2xl"
-                onClick={(event) => event.stopPropagation()}
-                initial={{ opacity: 0, y: 24, scale: 0.98 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: 24, scale: 0.98 }}
-                transition={{ duration: 0.2 }}
-              >
-                {urlImagenTrabajo && (
-                  <motion.img
-                    layoutId={layoutIdImagen}
-                    src={urlImagenTrabajo}
-                    alt={proyecto.titulo}
-                    className="h-72 w-full object-cover sm:h-80"
-                  />
-                )}
-
-                <div className="space-y-5 p-6 sm:p-8">
-                  <div className="flex flex-wrap items-center gap-3">
-                    <span className="inline-flex rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-slate-600">
-                      {proyecto.tipo_proyecto}
-                    </span>
-                    {proyecto.destacado && (
-                      <span className="inline-flex rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700">
-                        Destacado
-                      </span>
-                    )}
-                  </div>
-
-                  <div>
-                    <h3 className="text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">
-                      {proyecto.titulo}
-                    </h3>
-                    <p className="mt-3 text-base leading-8 text-slate-600">
-                      {proyecto.descripcion_larga}
-                    </p>
-                  </div>
-
-                  {proyecto.tecnologias && (
-                    <div>
-                      <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">
-                        Tecnologias
-                      </p>
-                      <p className="mt-2 text-sm text-slate-700 sm:text-base">
-                        {proyecto.tecnologias}
-                      </p>
-                    </div>
-                  )}
-
-                  <div className="flex flex-wrap gap-3">
-                    <button
-                      type="button"
-                      onClick={() => setModalDetalleAbierto(false)}
-                      className="rounded-full border border-slate-200 px-5 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50"
-                    >
-                      Cerrar
-                    </button>
-
-                    {proyecto.url_proyecto && (
-                      <a
-                        href={proyecto.url_proyecto}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex items-center gap-2 rounded-full bg-slate-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-800"
-                      >
-                        Ir al proyecto
-                        <ArrowUpRight className="h-4 w-4" />
-                      </a>
-                    )}
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </>
   );
 }
