@@ -81,7 +81,7 @@ function DetalleProyecto() {
           <div className="grid items-center gap-12 md:grid-cols-2">
             <div>
               <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-slate-400">
-                Proyecto
+                Proyecto{proyecto.tipo_proyecto ? ` - ${proyecto.tipo_proyecto}` : ''}
               </p>
 
               <h1 className="text-4xl font-bold leading-tight md:text-5xl">
@@ -99,26 +99,19 @@ function DetalleProyecto() {
                     {proyecto.tecnologias}
                   </p>
                 )}
-
-                {proyecto.tipo_proyecto && (
-                  <p>
-                    <span className="font-semibold text-white">Tipo de proyecto:</span>{' '}
-                    {proyecto.tipo_proyecto}
-                  </p>
-                )}
               </div>
             </div>
 
             {urlImagen && (
               <div className="relative flex min-h-[420px] items-center justify-end">
-                <div className="absolute right-0 h-[500px] w-[500px] rounded-full bg-blue-500/20 blur-[120px]"></div>
-
                 <div className="relative w-[130%] translate-x-16 md:w-[120%] md:translate-x-24">
-                  <img
-                    src={urlImagen}
-                    alt={proyecto.titulo}
-                    className="h-auto w-full object-contain brightness-110 contrast-110 drop-shadow-[0_40px_80px_rgba(0,0,0,0.9)]"
-                  />
+                  <div className="relative rounded-2xl border border-white/10 bg-white/5 p-2 shadow-[0_30px_80px_rgba(0,0,0,0.9)] backdrop-blur-sm">
+                    <img
+                      src={urlImagen}
+                      alt={proyecto.titulo}
+                      className="h-auto w-full rounded-xl object-contain"
+                    />
+                  </div>
                 </div>
               </div>
             )}
