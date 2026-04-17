@@ -78,7 +78,7 @@ function DetalleProyecto() {
             ← Volver
           </Link>
 
-          <div className="grid items-center gap-12 md:grid-cols-2 lg:grid-cols-[1fr_1.3fr]">
+          <div className="grid items-center gap-12 md:grid-cols-2">
             <div>
               <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-slate-400">
                 Proyecto
@@ -110,15 +110,17 @@ function DetalleProyecto() {
             </div>
 
             {urlImagen && (
-              <div className="relative">
-                <div className="absolute -inset-2 rounded-3xl bg-gradient-to-r from-cyan-500/30 to-blue-600/30 blur-2xl opacity-60"></div>
+              <div className="relative flex justify-end">
+                <div className="relative w-[120%] max-w-none translate-x-10 md:translate-x-16">
+                  <div className="absolute -inset-4 rounded-3xl bg-gradient-to-r from-cyan-500/30 to-blue-600/30 blur-2xl opacity-70"></div>
 
-                <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.6)]">
-                  <img
-                    src={urlImagen}
-                    alt={proyecto.titulo}
-                    className="h-full w-full object-cover transition duration-500 hover:scale-105"
-                  />
+                  <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/10 shadow-[0_30px_80px_rgba(0,0,0,0.8)]">
+                    <img
+                      src={urlImagen}
+                      alt={proyecto.titulo}
+                      className="h-[300px] w-full object-cover brightness-110 contrast-110 md:h-[400px]"
+                    />
+                  </div>
                 </div>
               </div>
             )}
