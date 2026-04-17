@@ -36,24 +36,24 @@ function GaleriaServicio({ imagenes = [], tituloServicio }) {
             return (
                 <article
                 key={item.id}
-                className="overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-sm"
+                className="overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl"
                 >
                 <div className="grid md:grid-cols-2">
                   {/* Imagen */}
                     <div
-                    className={`bg-white p-6 md:p-8 ${
+                    className={`relative min-h-[260px] overflow-hidden ${
                         invertido ? 'md:order-2' : 'md:order-1'
                     }`}
                     >
                     <button
                         type="button"
                         onClick={() => setImagenActiva(item)}
-                        className="group relative block w-full overflow-hidden rounded-[1.5rem] bg-slate-50"
+                        className="group absolute inset-0 block h-full w-full overflow-hidden"
                     >
                         <img
                         src={urlImagen}
                         alt={item.titulo || tituloServicio}
-                        className="h-auto w-full rounded-[1.5rem] object-cover transition duration-500 group-hover:scale-[1.02]"
+                        className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
                         />
 
                         <div className="absolute inset-0 flex items-center justify-center bg-slate-900/0 transition duration-300 group-hover:bg-slate-900/20">
