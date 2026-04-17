@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ArrowUpRight, Expand, Layers3 } from 'lucide-react';
+import ModalImagen from '../common/ModalImagen';
 import { getMediaUrl } from '../../utils/media';
 
 function ProyectoCard({ proyecto }) {
-  const [modalAbierto, setModalAbierto] = useState(false);
+  const [modalDetalleAbierto, setModalDetalleAbierto] = useState(false);
+  const [modalImagenAbierta, setModalImagenAbierta] = useState(false);
 
   const urlImagenTrabajo = getMediaUrl(proyecto?.imagen);
   const layoutIdImagen = `proyecto-imagen-${proyecto.id}`;
@@ -17,7 +19,7 @@ function ProyectoCard({ proyecto }) {
             <motion.button
               type="button"
               layoutId={layoutIdImagen}
-              onClick={() => setModalAbierto(true)}
+              onClick={() => setModalImagenAbierta(true)}
               className="group relative block w-full overflow-hidden rounded-xl"
             >
               <img
@@ -73,7 +75,7 @@ function ProyectoCard({ proyecto }) {
         <div className="mt-auto flex flex-wrap gap-3">
           <button
             type="button"
-            onClick={() => setModalAbierto(true)}
+            onClick={() => setModalDetalleAbierto(true)}
             className="inline-flex items-center justify-center rounded-full bg-slate-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-800"
           >
             Ver detalle
@@ -93,11 +95,19 @@ function ProyectoCard({ proyecto }) {
         </div>
       </div>
 
+      <ModalImagen
+        abierto={modalImagenAbierta}
+        imagen={urlImagenTrabajo}
+        alt={proyecto.titulo}
+        onClose={() => setModalImagenAbierta(false)}
+        layoutId={layoutIdImagen}
+      />
+
       <AnimatePresence>
-        {modalAbierto && (
+        {modalDetalleAbierto && (
           <motion.div
             className="fixed inset-0 z-[9999] bg-slate-950/70 backdrop-blur-sm"
-            onClick={() => setModalAbierto(false)}
+            onClick={() => setModalDetalleAbierto(false)}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -155,7 +165,7 @@ function ProyectoCard({ proyecto }) {
                   <div className="flex flex-wrap gap-3">
                     <button
                       type="button"
-                      onClick={() => setModalAbierto(false)}
+                      onClick={() => setModalDetalleAbierto(false)}
                       className="rounded-full border border-slate-200 px-5 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50"
                     >
                       Cerrar
