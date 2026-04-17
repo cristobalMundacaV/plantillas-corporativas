@@ -78,7 +78,7 @@ function DetalleProyecto() {
             ← Volver
           </Link>
 
-          <div className="grid items-center gap-12 md:grid-cols-2">
+          <div className="grid items-center gap-12 md:grid-cols-2 lg:grid-cols-[1fr_1.3fr]">
             <div>
               <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-slate-400">
                 Proyecto
