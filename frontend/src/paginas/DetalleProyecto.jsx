@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { Expand } from 'lucide-react';
 import { obtenerDetalleProyecto } from '../services/proyectosService';
 import { obtenerPerfilEmpresa } from '../services/coreService';
+import ModalImagen from '../componentes/common/ModalImagen';
 import GaleriaProyecto from '../componentes/ui/GaleriaProyecto';
 import Footer from '../componentes/layout/Footer';
 import { getMediaUrl } from '../utils/media';
@@ -12,6 +15,7 @@ function DetalleProyecto() {
   const [proyecto, setProyecto] = useState(null);
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState('');
+  const [modalImagenAbierta, setModalImagenAbierta] = useState(false);
 
   useEffect(() => {
     const cargarProyecto = async () => {
@@ -43,6 +47,7 @@ function DetalleProyecto() {
   }, []);
 
   const urlImagen = getMediaUrl(proyecto?.imagen);
+  const layoutIdImagen = proyecto ? `proyecto-detalle-imagen-${proyecto.id}` : 'proyecto-detalle-imagen';
 
   if (cargando) {
     return (
@@ -106,11 +111,24 @@ function DetalleProyecto() {
               <div className="relative flex min-h-[460px] items-center justify-end md:min-h-[500px]">
                 <div className="relative w-[135%] translate-x-16 md:w-[125%] md:translate-x-24">
                   <div className="relative rounded-2xl border border-white/10 bg-white/5 p-2 shadow-[0_30px_80px_rgba(0,0,0,0.9)] backdrop-blur-sm">
-                    <img
-                      src={urlImagen}
-                      alt={proyecto.titulo}
-                      className="h-auto w-full rounded-xl object-contain"
-                    />
+                    <motion.button
+                      type="button"
+                      layoutId={layoutIdImagen}
+                      onClick={() => setModalImagenAbierta(true)}
+                      className="group relative block w-full overflow-hidden rounded-xl"
+                    >
+                      <img
+                        src={urlImagen}
+                        alt={proyecto.titulo}
+                        className="h-auto w-full rounded-xl object-contain"
+                      />
+
+                      <div className="absolute inset-0 flex items-center justify-center bg-slate-900/0 transition duration-300 group-hover:bg-slate-900/20">
+                        <div className="translate-y-2 rounded-full bg-white/90 p-3 text-slate-900 opacity-0 shadow-lg transition duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+                          <Expand className="h-5 w-5" />
+                        </div>
+                      </div>
+                    </motion.button>
                   </div>
                 </div>
               </div>
@@ -160,6 +178,13 @@ function DetalleProyecto() {
           </div>
         </div>
       </section>
+      <ModalImagen
+        abierto={modalImagenAbierta}
+        imagen={urlImagen}
+        alt={proyecto.titulo}
+        onClose={() => setModalImagenAbierta(false)}
+        layoutId={layoutIdImagen}
+      />
       <Footer perfil={perfil} />
     </div>
   );
