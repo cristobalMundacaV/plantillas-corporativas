@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import Inicio from './paginas/Inicio';
 import DetalleServicio from './paginas/DetalleServicio';
+import DetalleProyecto from './paginas/DetalleProyecto';
 import Contacto from './paginas/Contacto';
 
 function TransicionPagina({ children }) {
@@ -44,6 +45,14 @@ function AppRoutes() {
           element={
             <TransicionPagina>
               <DetalleServicio />
+            </TransicionPagina>
+          }
+        />
+        <Route
+          path="/proyectos/:slug"
+          element={
+            <TransicionPagina>
+              <DetalleProyecto />
             </TransicionPagina>
           }
         />

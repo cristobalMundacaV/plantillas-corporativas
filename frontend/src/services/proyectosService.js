@@ -10,3 +10,7 @@ export const getProyectosDestacados = async () => {
     return response.data;
 };
 
+export const obtenerDetalleProyecto = async (slug) => {
+    const response = await api.get(`/proyectos/${slug}/`);
+    return response.data;
+};

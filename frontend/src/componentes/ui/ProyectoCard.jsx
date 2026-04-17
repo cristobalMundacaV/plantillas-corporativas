@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowUpRight, Expand, Layers3 } from 'lucide-react';
 import ModalImagen from '../common/ModalImagen';
@@ -48,7 +49,12 @@ function ProyectoCard({ proyecto }) {
         </div>
 
         <h3 className="text-xl font-semibold tracking-tight text-slate-900">
-          {proyecto.titulo}
+          <Link
+            to={`/proyectos/${proyecto.slug}`}
+            className="transition hover:text-slate-700"
+          >
+            {proyecto.titulo}
+          </Link>
         </h3>
 
         <p className="mb-5 mt-3 text-sm leading-7 text-slate-600 sm:text-base">
@@ -72,6 +78,20 @@ function ProyectoCard({ proyecto }) {
         )}
 
         <div className="mt-auto flex flex-wrap gap-3">
+          <Link
+            to={`/proyectos/${proyecto.slug}`}
+            className="inline-flex items-center justify-center rounded-full bg-slate-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-800"
+          >
+            Ver detalles
+          </Link>
+
+          <Link
+            to={`/proyectos/${proyecto.slug}`}
+            className="text-sm font-semibold text-slate-900 transition hover:text-slate-600"
+          >
+            Conocer mas {'->'}
+          </Link>
+
           {proyecto.url_proyecto && (
             <a
               href={proyecto.url_proyecto}
