@@ -99,16 +99,22 @@
           )}
         </div>
 
-        <div className="mt-12 rounded-[2rem] border border-slate-800 bg-slate-900/70 px-6 py-8 shadow-lg">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-400">
-            ¿Que esperas?
+        <div className="mt-16 rounded-[2.5rem] border border-slate-800 bg-gradient-to-br from-slate-900 to-slate-950 px-6 py-16 text-center shadow-xl">
+          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-slate-400">
+            ¿Qué esperas?
           </p>
-          <h4 className="mt-3 text-2xl font-semibold text-white md:text-3xl">
+
+          <h4 className="mt-4 text-3xl font-semibold text-white md:text-4xl">
             ¿Necesitas una web profesional?
           </h4>
+
+          <p className="mx-auto mt-4 max-w-xl text-sm text-slate-400 md:text-base">
+            Creamos soluciones modernas, rápidas y administrables para que tu negocio crezca y capte clientes.
+          </p>
+
           <a
             href="/contacto"
-            className="mt-5 inline-flex items-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-slate-950 transition hover:bg-slate-200"
+            className="mt-8 inline-flex items-center justify-center rounded-full bg-white px-8 py-4 text-base font-semibold text-slate-950 transition hover:bg-slate-200"
           >
             Solicita tu cotización →
           </a>
