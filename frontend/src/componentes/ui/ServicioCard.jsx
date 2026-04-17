@@ -36,7 +36,7 @@ function ServicioCard({ servicio }) {
             to={`/servicios/${servicio.slug}`}
             className="text-sm font-semibold text-slate-900 transition group-hover:text-slate-600"
           >
-            Saber mas {'->'}
+            Conocer más {'->'}
           </Link>
         </div>
       </div>
