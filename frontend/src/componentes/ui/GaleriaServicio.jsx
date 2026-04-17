@@ -70,7 +70,7 @@ function GaleriaServicio({ imagenes = [], tituloServicio }) {
                         invertido ? 'md:order-1' : 'md:order-2'
                     }`}
                     >
-                    <div>
+                    <div className="max-w-md">
 
                         <h3 className="text-2xl font-bold text-slate-900 md:text-3xl">
                         {item.titulo || 'Vista del servicio'}
