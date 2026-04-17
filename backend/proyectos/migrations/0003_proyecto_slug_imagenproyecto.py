@@ -29,7 +29,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='proyecto',
             name='slug',
-            field=models.SlugField(blank=True, null=True),
+            field=models.SlugField(blank=True, null=True, db_index=True),
             preserve_default=False,
         ),
         migrations.CreateModel(
@@ -51,9 +51,4 @@ class Migration(migrations.Migration):
             },
         ),
         migrations.RunPython(poblar_slugs_proyectos, migrations.RunPython.noop),
-        migrations.AlterField(
-            model_name='proyecto',
-            name='slug',
-            field=models.SlugField(blank=True, unique=True),
-        ),
     ]

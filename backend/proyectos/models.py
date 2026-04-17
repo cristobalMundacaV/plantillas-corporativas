@@ -4,7 +4,7 @@ from django.utils.text import slugify
 
 class Proyecto(models.Model):
     titulo = models.CharField(max_length=200)
-    slug = models.SlugField(unique=True, blank=True)
+    slug = models.SlugField(blank=True, db_index=True)
     descripcion_corta = models.CharField(max_length=280)
     descripcion_larga = models.TextField()
 
