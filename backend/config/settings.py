@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'contacto',
     'core',
     'testimonios',
+    'proyectos',
     'servicios',
 ]
 

@@ -3,7 +3,7 @@ import Navbar from '../componentes/layout/BarraNavegacion'
 import HeroSeccion from '../secciones/HeroSeccion';
 import Footer from '../componentes/layout/Footer';
 import { obtenerPerfilEmpresa } from '../services/coreService';
-import SeccionTestimonios from '../secciones/SeccionTestimonios';
+import SeccionProyectos from '../secciones/SeccionProyectos';
 import SeccionServicio from '../secciones/SeccionServicio';
 
 function Inicio() {
@@ -33,7 +33,7 @@ return (
         <main>
         <HeroSeccion perfil={perfil} cargando={cargandoPerfil} error={errorPerfil} />
         <SeccionServicio />
-        <SeccionTestimonios/>
+        <SeccionProyectos />
         </main>
         <Footer perfil={perfil} />
     </div>
