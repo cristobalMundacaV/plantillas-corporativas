@@ -110,12 +110,16 @@ function DetalleProyecto() {
             </div>
 
             {urlImagen && (
-              <div className="overflow-hidden rounded-3xl border border-white/10 bg-white/5 shadow-2xl">
-                <img
-                  src={urlImagen}
-                  alt={proyecto.titulo}
-                  className="h-full w-full object-cover"
-                />
+              <div className="relative">
+                <div className="absolute -inset-2 rounded-3xl bg-gradient-to-r from-cyan-500/30 to-blue-600/30 blur-2xl opacity-60"></div>
+
+                <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.6)]">
+                  <img
+                    src={urlImagen}
+                    alt={proyecto.titulo}
+                    className="h-full w-full object-cover transition duration-500 hover:scale-105"
+                  />
+                </div>
               </div>
             )}
           </div>
