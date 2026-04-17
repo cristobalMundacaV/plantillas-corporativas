@@ -15,7 +15,7 @@ function ProyectoCard({ proyecto }) {
     <>
       <div className="flex h-full flex-col rounded-[2rem] border border-slate-200 bg-white p-5 shadow-sm transition hover:shadow-md sm:p-6">
         {urlImagenTrabajo && (
-          <div className="mb-5 overflow-hidden rounded-2xl bg-slate-100 p-2 shadow-inner">
+          <div className="mb-5 overflow-hidden rounded-2xl bg-slate-100">
             <motion.button
               type="button"
               layoutId={layoutIdImagen}
@@ -25,7 +25,7 @@ function ProyectoCard({ proyecto }) {
               <img
                 src={urlImagenTrabajo}
                 alt={proyecto.titulo}
-                className="h-56 w-full rounded-xl object-cover"
+                className="h-auto w-full rounded-xl transition duration-500 group-hover:scale-[1.02]"
               />
 
               <div className="absolute inset-0 flex items-center justify-center bg-slate-900/0 transition duration-300 group-hover:bg-slate-900/20">
