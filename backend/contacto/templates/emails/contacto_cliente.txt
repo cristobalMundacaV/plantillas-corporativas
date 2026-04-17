@@ -1,0 +1,13 @@
+Estimado/a {{ mensaje.nombre }},
+
+Hemos recibido correctamente su mensaje a traves de {{ nombre_empresa }}.
+
+Nuestro equipo revisara los antecedentes enviados y le entregara una respuesta a la brevedad posible.
+
+Resumen de su solicitud:
+Asunto: {{ mensaje.asunto|default:"Sin asunto" }}
+Mensaje:
+{{ mensaje.mensaje }}
+
+Atentamente,
+Equipo {{ nombre_empresa }}

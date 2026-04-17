@@ -1,0 +1,10 @@
+Nuevo mensaje recibido desde la web - {{ nombre_empresa }}
+
+Se ha registrado un nuevo contacto a traves del formulario del sitio.
+
+Nombre: {{ mensaje.nombre }}
+Correo: {{ mensaje.correo }}
+Asunto: {{ mensaje.asunto|default:"Sin asunto" }}
+
+Mensaje:
+{{ mensaje.mensaje }}

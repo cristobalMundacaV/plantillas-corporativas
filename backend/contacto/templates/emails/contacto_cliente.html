@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="es">
+  <body style="margin:0;padding:0;background:#f4f7fb;color:#0f172a;font-family:Arial,Helvetica,sans-serif;">
+    <div style="padding:32px 16px;">
+      <div style="max-width:680px;margin:0 auto;">
+        <div style="border-radius:28px;overflow:hidden;background:linear-gradient(135deg, {{ color_primario }} 0%, {{ color_secundario }} 100%);padding:1px;box-shadow:0 24px 80px rgba(15,23,42,0.18);">
+          <div style="background:#07111f;border-radius:27px;padding:36px 32px 20px;">
+            {% if logo_url %}
+              <div style="margin-bottom:28px;">
+                <img src="{{ logo_url }}" alt="Logo" style="max-height:52px;max-width:180px;display:block;">
+              </div>
+            {% endif %}
+
+            <div style="display:inline-block;padding:8px 14px;border-radius:999px;background:rgba(255,255,255,0.08);font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:#cbd5e1;">
+              Confirmacion de recepcion
+            </div>
+
+            <h1 style="margin:18px 0 12px;font-size:34px;line-height:1.15;color:#ffffff;">
+              Hemos recibido su mensaje
+            </h1>
+
+            <p style="margin:0 0 8px;font-size:18px;line-height:1.8;color:#dbe7f3;">
+              Estimado/a {{ mensaje.nombre }},
+            </p>
+            <p style="margin:0 0 8px;font-size:17px;line-height:1.9;color:#dbe7f3;">
+              Agradecemos que se haya puesto en contacto con nosotros. Su mensaje fue recibido correctamente y nuestro equipo lo evaluara con atencion.
+            </p>
+            <p style="margin:0;font-size:17px;line-height:1.9;color:#dbe7f3;">
+              Le entregaremos una respuesta a la brevedad posible.
+            </p>
+          </div>
+
+          <div style="background:#ffffff;padding:30px 32px 34px;">
+            <div style="margin-bottom:22px;">
+              <p style="margin:0 0 6px;font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:#64748b;">
+                Empresa
+              </p>
+              <p style="margin:0;font-size:22px;font-weight:700;color:#0f172a;">
+                {{ nombre_empresa }}
+              </p>
+            </div>
+
+            <div style="border:1px solid #e2e8f0;border-radius:22px;padding:22px 22px 18px;background:#f8fafc;">
+              <p style="margin:0 0 10px;font-size:13px;letter-spacing:0.16em;text-transform:uppercase;color:#64748b;">
+                Resumen de su solicitud
+              </p>
+              <p style="margin:0 0 10px;font-size:15px;line-height:1.8;color:#334155;">
+                <strong style="color:#0f172a;">Asunto:</strong> {{ mensaje.asunto|default:"Sin asunto" }}
+              </p>
+              <p style="margin:0;font-size:15px;line-height:1.9;color:#334155;">
+                <strong style="color:#0f172a;">Mensaje:</strong><br>
+                {{ mensaje.mensaje|linebreaksbr }}
+              </p>
+            </div>
+
+            <p style="margin:22px 0 0;font-size:14px;line-height:1.8;color:#64748b;">
+              Este correo confirma que su solicitud fue recibida correctamente. Si necesita complementar informacion, puede responder directamente a este mensaje.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
