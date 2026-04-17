@@ -41,7 +41,7 @@ function GaleriaServicio({ imagenes = [], tituloServicio }) {
                 <div className="grid md:grid-cols-2">
                   {/* Imagen */}
                     <div
-                    className={`relative min-h-[260px] overflow-hidden ${
+                    className={`relative min-h-[320px] overflow-hidden md:min-h-[340px] ${
                         invertido ? 'md:order-2' : 'md:order-1'
                     }`}
                     >
