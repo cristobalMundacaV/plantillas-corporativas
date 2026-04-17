@@ -99,6 +99,21 @@
           )}
         </div>
 
+        <div className="mt-12 rounded-[2rem] border border-slate-800 bg-slate-900/70 px-6 py-8 shadow-lg">
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-400">
+            Cierre de proyecto
+          </p>
+          <h4 className="mt-3 text-2xl font-semibold text-white md:text-3xl">
+            ¿Necesitas una web profesional?
+          </h4>
+          <a
+            href="/contacto"
+            className="mt-5 inline-flex items-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-slate-950 transition hover:bg-slate-200"
+          >
+            Solicita tu cotización →
+          </a>
+        </div>
+
         <div className="my-8 h-px bg-slate-800"></div>
 
         <div className="text-center text-xs text-slate-500">
