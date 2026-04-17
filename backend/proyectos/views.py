@@ -7,7 +7,7 @@ class ListaProyectosView(ListAPIView):
     serializer_class = ProyectoSerializer
 
     def get_queryset(self):
-        return Proyecto.objects.filter(activo=True).order_by('orden', '-creado')
+        return Proyecto.objects.filter(visible=True).order_by('orden', '-creado')
 
 
 class ListaProyectosDestacadosView(ListAPIView):
@@ -15,7 +15,6 @@ class ListaProyectosDestacadosView(ListAPIView):
 
     def get_queryset(self):
         return Proyecto.objects.filter(
-            activo=True,
+            visible=True,
             destacado=True
         ).order_by('orden', '-creado')
-

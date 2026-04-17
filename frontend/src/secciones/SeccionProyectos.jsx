@@ -47,7 +47,7 @@ function SeccionProyectos() {
         <TituloSeccion
           subtitulo="Proyectos"
           titulo="Resultados reales que reflejan nuestra forma de trabajar"
-          descripcion="Mostramos trabajos destacados con el mismo cuidado visual y nivel de detalle que aplicamos en cada entrega."
+          descripcion="Mostramos proyectos destacados con una vista clara del tipo de solucion, stack utilizado y detalle de cada entrega."
         />
 
         {cargando && (
@@ -103,4 +103,3 @@ function SeccionProyectos() {
 }
 
 export default SeccionProyectos;
-

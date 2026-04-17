@@ -15,14 +15,15 @@ class Migration(migrations.Migration):
             name='Proyecto',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('nombre_cliente', models.CharField(max_length=150)),
-                ('cargo', models.CharField(blank=True, max_length=150, null=True)),
-                ('empresa', models.CharField(blank=True, max_length=150, null=True)),
-                ('contenido', models.TextField()),
-                ('foto', models.ImageField(blank=True, null=True, upload_to='proyectos/')),
-                ('puntuacion', models.PositiveSmallIntegerField(default=5)),
+                ('titulo', models.CharField(max_length=200)),
+                ('descripcion_corta', models.CharField(max_length=280)),
+                ('descripcion_larga', models.TextField()),
+                ('imagen', models.ImageField(blank=True, null=True, upload_to='proyectos/')),
+                ('tecnologias', models.CharField(blank=True, max_length=200, null=True)),
+                ('url_proyecto', models.URLField(blank=True, null=True)),
+                ('tipo_proyecto', models.CharField(max_length=100)),
                 ('destacado', models.BooleanField(default=False)),
-                ('activo', models.BooleanField(default=True)),
+                ('visible', models.BooleanField(default=True)),
                 ('orden', models.PositiveIntegerField(default=0)),
                 ('creado', models.DateTimeField(auto_now_add=True)),
                 ('modificado', models.DateTimeField(auto_now_add=True)),
@@ -34,4 +35,3 @@ class Migration(migrations.Migration):
             },
         ),
     ]
-
