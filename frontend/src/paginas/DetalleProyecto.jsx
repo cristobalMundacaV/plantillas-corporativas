@@ -103,8 +103,8 @@ function DetalleProyecto() {
             </div>
 
             {urlImagen && (
-              <div className="relative flex min-h-[420px] items-center justify-end">
-                <div className="relative w-[130%] translate-x-16 md:w-[120%] md:translate-x-24">
+              <div className="relative flex min-h-[460px] items-center justify-end md:min-h-[500px]">
+                <div className="relative w-[135%] translate-x-16 md:w-[125%] md:translate-x-24">
                   <div className="relative rounded-2xl border border-white/10 bg-white/5 p-2 shadow-[0_30px_80px_rgba(0,0,0,0.9)] backdrop-blur-sm">
                     <img
                       src={urlImagen}
