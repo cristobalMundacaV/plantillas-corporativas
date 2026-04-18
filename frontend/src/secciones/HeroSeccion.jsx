@@ -66,7 +66,7 @@ function HeroSeccion({ perfil, cargando }) {
                   onClick={handleIrAContacto}
                   className="rounded-full bg-slate-900 px-6 py-3 text-sm font-semibold text-white transition hover:bg-slate-700 sm:w-auto"
                 >
-                  Solicitar cotización.
+                  Solicitar cotización
                 </button>
 
                 <button

@@ -52,16 +52,21 @@ function Contacto() {
     e.preventDefault();
 
     const camposRequeridos = [
-      { id: 'nombre', label: 'Nombre' },
-      { id: 'email', label: 'Email' },
-      { id: 'mensaje', label: 'Mensaje' },
+      'nombre',
+      'email',
+      'mensaje',
     ];
 
-    const campoFaltante = camposRequeridos.find(({ id }) => !form[id]?.trim());
+    const nuevosErrores = camposRequeridos.reduce((acc, campo) => {
+      if (!form[campo]?.trim()) {
+        acc[campo] = true;
+      }
+      return acc;
+    }, {});
 
-    if (campoFaltante) {
-      setErrores({ [campoFaltante.id]: true });
-      mostrarError(`Debes rellenar el campo : ${campoFaltante.label}`);
+    if (Object.keys(nuevosErrores).length > 0) {
+      setErrores(nuevosErrores);
+      mostrarError('Hay uno o mas campos vacios.');
       return;
     }
 
