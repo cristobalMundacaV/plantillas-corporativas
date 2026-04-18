@@ -245,7 +245,7 @@ function Contacto() {
           </div>
         </div>
       </section>
-      <Footer perfil={perfil} />
+      <Footer perfil={perfil} cargando={cargandoPerfil} />
     </>
   );
 }

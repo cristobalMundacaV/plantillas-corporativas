@@ -35,7 +35,7 @@ return (
         <SeccionServicio />
         <SeccionProyectos />
         </main>
-        <Footer perfil={perfil} />
+        <Footer perfil={perfil} cargando={cargandoPerfil} />
     </div>
     );
 }
