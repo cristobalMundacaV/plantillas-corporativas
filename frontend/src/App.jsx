@@ -84,6 +84,7 @@ function App() {
         }
 
         link.setAttribute('href', faviconUrl);
+        window.localStorage.setItem('site-favicon-url', faviconUrl);
       } catch (error) {
         console.error('No se pudo actualizar el favicon desde PerfilEmpresa.', error);
       }

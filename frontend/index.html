@@ -5,6 +5,25 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mundaca's Solutions</title>
+    <script>
+      (function () {
+        try {
+          var cachedFavicon = window.localStorage.getItem('site-favicon-url');
+          if (!cachedFavicon) return;
+
+          var link = document.querySelector("link[rel='icon']");
+          if (!link) {
+            link = document.createElement('link');
+            link.setAttribute('rel', 'icon');
+            document.head.appendChild(link);
+          }
+
+          link.setAttribute('href', cachedFavicon);
+        } catch (error) {
+          console.warn('No se pudo restaurar el favicon cacheado.', error);
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
