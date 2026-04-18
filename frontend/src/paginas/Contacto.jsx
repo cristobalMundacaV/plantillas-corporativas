@@ -61,7 +61,7 @@ function Contacto() {
 
     if (campoFaltante) {
       setErrores({ [campoFaltante.id]: true });
-      mostrarError(`Debes rellenar el campo ${campoFaltante.label}`);
+      mostrarError(`Debes rellenar el campo : ${campoFaltante.label}`);
       return;
     }
 
