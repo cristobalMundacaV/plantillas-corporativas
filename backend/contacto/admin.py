@@ -4,8 +4,8 @@ from .models import MensajeContacto
 
 @admin.register(MensajeContacto)
 class MensajeContactoAdmin(admin.ModelAdmin):
-    list_display = ('nombre', 'correo', 'asunto', 'leido', 'respondido', 'creado')
+    list_display = ('nombre', 'correo', 'leido', 'respondido', 'creado')
     list_filter = ('leido', 'respondido', 'creado')
-    search_fields = ('nombre', 'correo', 'telefono', 'asunto', 'mensaje')
+    search_fields = ('nombre', 'correo', 'telefono', 'mensaje')
     ordering = ('-creado',)
     readonly_fields = ('creado', 'modificado')

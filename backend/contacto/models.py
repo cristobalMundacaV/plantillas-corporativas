@@ -5,7 +5,6 @@ class MensajeContacto(models.Model):
     nombre = models.CharField(max_length=150)
     correo = models.EmailField()
     telefono = models.CharField(max_length=30, blank=True, null=True)
-    asunto = models.CharField(max_length=200, blank=True, null=True)
     mensaje = models.TextField()
 
     leido = models.BooleanField(default=False)
