@@ -31,12 +31,20 @@ function ServicioCard({ servicio }) {
           {servicio.descripcion_corta}
         </p>
 
-        <div className="mt-6">
+        <div className="mt-6 flex items-center justify-between">
           <Link
             to={`/servicios/${servicio.slug}`}
             className="text-sm font-semibold text-slate-900 transition group-hover:text-slate-600"
           >
-            Conocer más {'->'}
+            Conocer más
+          </Link>
+
+          <Link
+            to={`/servicios/${servicio.slug}`}
+            aria-label={`Ir al detalle de ${servicio.titulo}`}
+            className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-slate-700 transition group-hover:translate-x-1 group-hover:bg-slate-200"
+          >
+            →
           </Link>
         </div>
       </div>

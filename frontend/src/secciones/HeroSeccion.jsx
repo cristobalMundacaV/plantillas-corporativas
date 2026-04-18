@@ -32,7 +32,7 @@ function HeroSeccion({ perfil, cargando }) {
       id="inicio"
       className="relative w-full overflow-hidden bg-slate-950 text-white"
     >
-      <div className="mx-auto grid min-h-[calc(100vh-80px)] max-w-7xl items-center gap-10 px-6 py-12 md:gap-12 md:py-20 lg:grid-cols-2">
+      <div className="mx-auto grid min-h-[auto] max-w-7xl items-center gap-10 px-6 py-12 md:min-h-[calc(100vh-80px)] md:gap-12 md:py-20 lg:grid-cols-2">
         <div className="order-1">
           {cargando ? (
             <div className="animate-pulse">
@@ -66,7 +66,7 @@ function HeroSeccion({ perfil, cargando }) {
                   onClick={handleIrAContacto}
                   className="rounded-full bg-slate-900 px-6 py-3 text-sm font-semibold text-white transition hover:bg-slate-700 sm:w-auto"
                 >
-                  Solicitar cotización
+                  Solicitar cotización.
                 </button>
 
                 <button
@@ -81,7 +81,7 @@ function HeroSeccion({ perfil, cargando }) {
           )}
         </div>
 
-        <div className="order-2">
+        <div className="order-2 mx-auto w-full max-w-md lg:max-w-none">
           <div className="rounded-3xl border border-white/10 bg-white/5 p-3 shadow-2xl backdrop-blur sm:p-4 md:p-5">
             <div className="overflow-hidden rounded-[1.75rem] bg-slate-900">
               {cargando ? (
@@ -92,10 +92,10 @@ function HeroSeccion({ perfil, cargando }) {
                 <img
                   src={urlImagenHero}
                   alt={perfil?.titulo_hero || 'Imagen principal'}
-                  className="h-[420px] w-full object-cover"
+                  className="h-72 w-full object-cover object-center sm:h-80 md:h-[420px] lg:h-[460px]"
                 />
               ) : (
-                <div className="flex h-[420px] items-center justify-center bg-slate-800 text-sm text-slate-400">
+                <div className="flex h-72 items-center justify-center bg-slate-800 text-sm text-slate-400 sm:h-80 md:h-[420px] lg:h-[460px]">
                   Imagen hero no configurada
                 </div>
               )}
