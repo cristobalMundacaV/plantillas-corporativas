@@ -80,16 +80,19 @@ function Contacto() {
         mensaje: form.mensaje,
       };
 
-      await enviarMensajeContacto(payload);
+      const respuesta = await enviarMensajeContacto(payload);
 
       ocultarToast();
-      mostrarExito('Mensaje enviado correctamente.');
-
-      setForm({
-        nombre: '',
-        email: '',
-        mensaje: '',
-      });
+      if (respuesta?.correo_enviado === false) {
+        mostrarError(respuesta.mensaje || 'Tu mensaje se guardo, pero no se pudieron enviar los correos.');
+      } else {
+        mostrarExito(respuesta?.mensaje || 'Mensaje enviado correctamente.');
+        setForm({
+          nombre: '',
+          email: '',
+          mensaje: '',
+        });
+      }
     } catch (error) {
       console.error(error);
       ocultarToast();

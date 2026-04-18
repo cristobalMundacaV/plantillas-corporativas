@@ -61,6 +61,8 @@ class CrearMensajeContactoView(CreateAPIView):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         mensaje = serializer.save()
+        correo_enviado = True
+        mensaje_respuesta = 'Tu mensaje fue enviado correctamente.'
 
         try:
             perfil_empresa = PerfilEmpresa.objects.first()
@@ -70,12 +72,18 @@ class CrearMensajeContactoView(CreateAPIView):
                     perfil_empresa,
                     base_url=request.build_absolute_uri('/'),
                 )
+            else:
+                correo_enviado = False
+                mensaje_respuesta = 'Tu mensaje se guardo, pero no existe un perfil de empresa configurado para enviar correos.'
         except Exception:
+            correo_enviado = False
+            mensaje_respuesta = 'Tu mensaje se guardo, pero no se pudieron enviar los correos.'
             logger.exception('No se pudieron enviar los correos del formulario de contacto.')
 
         return Response(
             {
-                'mensaje': 'Tu mensaje fue enviado correctamente.',
+                'mensaje': mensaje_respuesta,
+                'correo_enviado': correo_enviado,
                 'datos': MensajeContactoSerializer(mensaje).data,
             },
             status=status.HTTP_201_CREATED

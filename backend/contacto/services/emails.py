@@ -1,6 +1,10 @@
+import logging
+
 from django.conf import settings
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
+
+logger = logging.getLogger(__name__)
 
 
 def _obtener_logo_url(perfil_empresa, base_url=None):
@@ -37,6 +41,13 @@ def enviar_correo_html(
     cuerpo_txt = render_to_string(template_txt, contexto)
     cuerpo_html = render_to_string(template_html, contexto)
 
+    logger.info(
+        'Enviando correo "%s" a %s desde %s',
+        asunto,
+        destinatarios,
+        settings.DEFAULT_FROM_EMAIL,
+    )
+
     email = EmailMultiAlternatives(
         subject=asunto,
         body=cuerpo_txt,
@@ -46,6 +57,7 @@ def enviar_correo_html(
     )
     email.attach_alternative(cuerpo_html, 'text/html')
     email.send(fail_silently=False)
+    logger.info('Correo "%s" enviado correctamente a %s', asunto, destinatarios)
 
 
 def enviar_correos_contacto(mensaje_contacto, perfil_empresa, base_url=None):
