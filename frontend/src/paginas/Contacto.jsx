@@ -117,7 +117,7 @@ function Contacto() {
               </p>
 
               <h2 className="text-2xl font-semibold leading-tight sm:text-3xl">
-                Disenamos paginas web modernas, rapidas y administrables.
+                Diseñamos paginas web modernas, rapidas y administrables.
               </h2>
 
               <p className="mt-6 text-base leading-8 text-slate-300">

@@ -1,64 +1,90 @@
 <!doctype html>
 <html lang="es">
-  <body style="margin:0;padding:0;background:#f4f7fb;color:#0f172a;font-family:Arial,Helvetica,sans-serif;">
-    <div style="padding:32px 16px;">
-      <div style="max-width:680px;margin:0 auto;">
-        <div style="border-radius:28px;overflow:hidden;background:linear-gradient(135deg, {{ color_primario }} 0%, {{ color_secundario }} 100%);padding:1px;box-shadow:0 24px 80px rgba(15,23,42,0.18);">
-          <div style="background:#07111f;border-radius:27px;padding:36px 32px 20px;">
-            {% if logo_url %}
-              <div style="margin-bottom:28px;">
-                <img src="{{ logo_url }}" alt="Logo" style="max-height:52px;max-width:180px;display:block;">
-              </div>
-            {% endif %}
+  <head>
+    <meta charset="utf-8">
+    <title>Confirmación de recepción</title>
+  </head>
+  <body style="margin:0;padding:0;background:#eef2f7;color:#0f172a;font-family:Arial,Helvetica,sans-serif;">
+    <div style="margin:0;padding:32px 14px;background:#eef2f7;">
+      <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+        <tr>
+          <td align="center">
+            <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="max-width:680px;background:#ffffff;border-radius:28px;overflow:hidden;box-shadow:0 20px 60px rgba(15,23,42,0.12);">
+              <tr>
+                <td style="background:linear-gradient(135deg, {{ color_primario }} 0%, {{ color_secundario }} 100%);padding:34px 32px 28px;">
+                  {% if logo_url %}
+                    <div style="margin-bottom:20px;">
+                      <img src="{{ logo_url }}" alt="Logo" style="max-height:44px;max-width:170px;display:block;">
+                    </div>
+                  {% endif %}
 
-            <div style="display:inline-block;padding:8px 14px;border-radius:999px;background:rgba(255,255,255,0.08);font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:#cbd5e1;">
-              Confirmacion de recepcion
-            </div>
+                  <div style="display:inline-block;padding:7px 12px;border-radius:999px;background:rgba(255,255,255,0.14);font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#e2e8f0;">
+                    Confirmación de recepción
+                  </div>
 
-            <h1 style="margin:18px 0 12px;font-size:34px;line-height:1.15;color:#ffffff;">
-              Hemos recibido su mensaje
-            </h1>
+                  <h1 style="margin:18px 0 10px;font-size:30px;line-height:1.2;color:#ffffff;font-weight:700;">
+                    Hemos recibido su mensaje
+                  </h1>
 
-            <p style="margin:0 0 8px;font-size:18px;line-height:1.8;color:#dbe7f3;">
-              Estimado/a {{ mensaje.nombre }},
-            </p>
-            <p style="margin:0 0 8px;font-size:17px;line-height:1.9;color:#dbe7f3;">
-              Agradecemos que se haya puesto en contacto con nosotros. Su mensaje fue recibido correctamente y nuestro equipo lo evaluara con atencion.
-            </p>
-            <p style="margin:0;font-size:17px;line-height:1.9;color:#dbe7f3;">
-              Le entregaremos una respuesta a la brevedad posible.
-            </p>
-          </div>
+                  <p style="margin:0 0 8px;font-size:17px;line-height:1.7;color:#eaf2fb;">
+                    Estimado/a {{ mensaje.nombre }},
+                  </p>
+                  <p style="margin:0;font-size:16px;line-height:1.8;color:#eaf2fb;">
+                    Gracias por ponerse en contacto con nosotros. Su solicitud fue recibida correctamente y será revisada por nuestro equipo a la brevedad.
+                  </p>
+                </td>
+              </tr>
 
-          <div style="background:#ffffff;padding:30px 32px 34px;">
-            <div style="margin-bottom:22px;">
-              <p style="margin:0 0 6px;font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:#64748b;">
-                Empresa
-              </p>
-              <p style="margin:0;font-size:22px;font-weight:700;color:#0f172a;">
-                {{ nombre_empresa }}
-              </p>
-            </div>
+              <tr>
+                <td style="padding:30px 32px 18px;">
+                  <p style="margin:0 0 6px;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:#64748b;">
+                    Empresa
+                  </p>
+                  <p style="margin:0;font-size:24px;font-weight:700;color:#0f172a;">
+                    {{ nombre_empresa }}
+                  </p>
+                </td>
+              </tr>
 
-            <div style="border:1px solid #e2e8f0;border-radius:22px;padding:22px 22px 18px;background:#f8fafc;">
-              <p style="margin:0 0 10px;font-size:13px;letter-spacing:0.16em;text-transform:uppercase;color:#64748b;">
-                Resumen de su solicitud
-              </p>
-              <p style="margin:0 0 10px;font-size:15px;line-height:1.8;color:#334155;">
-                <strong style="color:#0f172a;">Asunto:</strong> {{ mensaje.asunto|default:"Sin asunto" }}
-              </p>
-              <p style="margin:0;font-size:15px;line-height:1.9;color:#334155;">
-                <strong style="color:#0f172a;">Mensaje:</strong><br>
-                {{ mensaje.mensaje|linebreaksbr }}
-              </p>
-            </div>
+              <tr>
+                <td style="padding:0 32px 10px;">
+                  <div style="border:1px solid #e2e8f0;border-radius:22px;background:#f8fafc;padding:22px;">
+                    <p style="margin:0 0 16px;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:#64748b;">
+                      Resumen de su solicitud
+                    </p>
 
-            <p style="margin:22px 0 0;font-size:14px;line-height:1.8;color:#64748b;">
-              Este correo confirma que su solicitud fue recibida correctamente. Si necesita complementar informacion, puede responder directamente a este mensaje.
-            </p>
-          </div>
-        </div>
-      </div>
+                    <div style="margin:0 0 12px;padding-bottom:12px;border-bottom:1px solid #e2e8f0;">
+                      <p style="margin:0 0 4px;font-size:12px;text-transform:uppercase;letter-spacing:0.12em;color:#64748b;">
+                        Asunto
+                      </p>
+                      <p style="margin:0;font-size:15px;line-height:1.7;color:#0f172a;">
+                        {{ mensaje.asunto|default:"Sin asunto" }}
+                      </p>
+                    </div>
+
+                    <div>
+                      <p style="margin:0 0 4px;font-size:12px;text-transform:uppercase;letter-spacing:0.12em;color:#64748b;">
+                        Mensaje
+                      </p>
+                      <p style="margin:0;font-size:15px;line-height:1.85;color:#334155;">
+                        {{ mensaje.mensaje|linebreaksbr }}
+                      </p>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td style="padding:10px 32px 32px;">
+                  <p style="margin:0;font-size:14px;line-height:1.8;color:#64748b;">
+                    Este correo confirma que su mensaje fue recibido correctamente. Si necesita complementar información, puede responder directamente a este correo.
+                  </p>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
     </div>
   </body>
 </html>
