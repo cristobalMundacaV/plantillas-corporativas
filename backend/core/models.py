@@ -12,6 +12,7 @@ class PerfilEmpresa(models.Model):
     whatsapp = models.CharField(max_length=20,blank=True,null=True)
 
     logo = models.ImageField(upload_to='empresa/',blank=True,null=True)
+    favicon = models.ImageField(upload_to='empresa/',blank=True,null=True)
 
     color_primario = models.CharField(max_length=20,default='#0f172a')
     color_secundario = models.CharField(max_length=20,default='#2563eb')

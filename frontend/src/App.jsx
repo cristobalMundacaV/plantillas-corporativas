@@ -1,9 +1,12 @@
+import { useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import Inicio from './paginas/Inicio';
 import DetalleServicio from './paginas/DetalleServicio';
 import DetalleProyecto from './paginas/DetalleProyecto';
 import Contacto from './paginas/Contacto';
+import { obtenerPerfilEmpresa } from './services/coreService';
+import { getMediaUrl } from './utils/media';
 
 function TransicionPagina({ children }) {
   return (
@@ -62,6 +65,37 @@ function AppRoutes() {
 }
 
 function App() {
+  useEffect(() => {
+    let activo = true;
+
+    const actualizarBranding = async () => {
+      try {
+        const perfil = await obtenerPerfilEmpresa();
+        if (!activo || !perfil?.favicon) return;
+
+        const faviconUrl = getMediaUrl(perfil.favicon);
+        if (!faviconUrl) return;
+
+        let link = document.querySelector("link[rel='icon']");
+        if (!link) {
+          link = document.createElement('link');
+          link.setAttribute('rel', 'icon');
+          document.head.appendChild(link);
+        }
+
+        link.setAttribute('href', faviconUrl);
+      } catch (error) {
+        console.error('No se pudo actualizar el favicon desde PerfilEmpresa.', error);
+      }
+    };
+
+    actualizarBranding();
+
+    return () => {
+      activo = false;
+    };
+  }, []);
+
   return (
     <BrowserRouter>
       <AppRoutes />
