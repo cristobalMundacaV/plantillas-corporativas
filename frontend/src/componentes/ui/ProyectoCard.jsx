@@ -13,7 +13,7 @@ function ProyectoCard({ proyecto }) {
 
   return (
     <>
-      <div className="flex h-full flex-col rounded-[2rem] border border-slate-200 bg-white p-5 shadow-sm transition hover:shadow-md sm:p-6">
+      <div className="group flex h-full flex-col rounded-[2rem] border border-slate-200 bg-white p-5 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl sm:p-6">
         {urlImagenTrabajo && (
           <div className="mb-5 overflow-hidden rounded-2xl bg-slate-100">
             <motion.button
