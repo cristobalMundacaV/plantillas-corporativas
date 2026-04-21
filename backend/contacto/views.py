@@ -75,10 +75,17 @@ class CrearMensajeContactoView(CreateAPIView):
             correo_enviado = False
             mensaje_respuesta = f'Tu mensaje se guardo, pero no se enviaron los correos: {exc}'
             logger.warning('Validacion de correos en formulario de contacto: %s', exc)
-        except Exception:
+        except Exception as exc:
             correo_enviado = False
-            mensaje_respuesta = 'Tu mensaje se guardo, pero no se pudieron enviar los correos.'
-            logger.exception('No se pudieron enviar los correos del formulario de contacto.')
+            detalle_error = str(exc).strip() or exc.__class__.__name__
+            mensaje_respuesta = (
+                'Tu mensaje se guardo, pero no se pudieron enviar los correos: '
+                f'{detalle_error}'
+            )
+            logger.exception(
+                'No se pudieron enviar los correos del formulario de contacto: %s',
+                detalle_error,
+            )
 
         return Response(
             {
