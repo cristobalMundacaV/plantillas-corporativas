@@ -25,7 +25,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'corsheaders',
-    'django_ses',
+    'anymail',
     'contacto',
     'core',
     'testimonios',
@@ -108,10 +108,14 @@ CORS_ALLOWED_ORIGINS = os.getenv(
     'http://localhost:5173,http://127.0.0.1:5173'
 ).split(',')
 
-EMAIL_BACKEND = os.getenv('EMAIL_BACKEND', 'django_ses.SESBackend')
-AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID', '')
-AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY', '')
-AWS_SES_REGION_NAME = os.getenv('AWS_SES_REGION_NAME', 'us-east-1')
-DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL', 'contacto@mundacasolutions.com')
-SERVER_EMAIL = os.getenv('SERVER_EMAIL', DEFAULT_FROM_EMAIL)
+EMAIL_BACKEND = "anymail.backends.resend.EmailBackend"
+ANYMAIL = {
+    "RESEND_API_KEY": os.getenv("RESEND_API_KEY"),
+}
+DEFAULT_FROM_EMAIL = os.getenv(
+    "DEFAULT_FROM_EMAIL",
+    "Mundaca Solutions <noreply@send.mundacasolutions.com>"
+)
+CONTACT_EMAIL = os.getenv('CONTACT_EMAIL', 'contacto@mundacasolutions.com')
+SERVER_EMAIL = DEFAULT_FROM_EMAIL
 SITE_URL = os.getenv('SITE_URL', '')

@@ -1,7 +1,9 @@
 import logging
 
 from django.conf import settings
+from django.core.exceptions import ValidationError
 from django.core.mail import EmailMultiAlternatives
+from django.core.validators import validate_email
 from django.template.loader import render_to_string
 
 logger = logging.getLogger(__name__)
@@ -60,25 +62,43 @@ def enviar_correo_html(
     logger.info('Correo "%s" enviado correctamente a %s', asunto, destinatarios)
 
 
+def _validar_correo_obligatorio(correo: str, campo: str):
+    correo_limpio = (correo or '').strip()
+    if not correo_limpio:
+        raise ValueError(f'{campo} no esta configurado.')
+
+    try:
+        validate_email(correo_limpio)
+    except ValidationError as exc:
+        raise ValueError(f'{campo} no es un correo valido.') from exc
+
+    return correo_limpio
+
+
 def enviar_correos_contacto(mensaje_contacto, perfil_empresa, base_url=None):
-    if not perfil_empresa or not perfil_empresa.correo:
-        raise ValueError('PerfilEmpresa no tiene correo configurado.')
+    if not perfil_empresa:
+        raise ValueError('PerfilEmpresa no esta configurado para enviar correos.')
 
-    correo_cliente = (getattr(mensaje_contacto, 'correo', '') or '').strip()
-    correo_empresa = (perfil_empresa.correo or '').strip()
+    correo_empresa = _validar_correo_obligatorio(
+        getattr(perfil_empresa, 'correo', ''),
+        'El correo de PerfilEmpresa',
+    )
+    correo_cliente = _validar_correo_obligatorio(
+        getattr(mensaje_contacto, 'correo', ''),
+        'El correo del cliente',
+    )
 
-    if not correo_cliente:
-        raise ValueError('El mensaje de contacto no tiene correo del cliente.')
-
-    nombre_empresa = perfil_empresa.nombre_empresa or 'Nuestra empresa'
+    nombre_empresa = (
+        getattr(perfil_empresa, 'nombre_empresa', '') or 'Nuestra empresa'
+    )
 
     contexto = {
         'mensaje': mensaje_contacto,
         'perfil': perfil_empresa,
         'nombre_empresa': nombre_empresa,
         'logo_url': _obtener_logo_url(perfil_empresa, base_url=base_url),
-        'color_primario': perfil_empresa.color_primario or '#0f172a',
-        'color_secundario': perfil_empresa.color_secundario or '#2563eb',
+        'color_primario': getattr(perfil_empresa, 'color_primario', '') or '#0f172a',
+        'color_secundario': getattr(perfil_empresa, 'color_secundario', '') or '#2563eb',
     }
 
     enviar_correo_html(

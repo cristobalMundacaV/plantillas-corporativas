@@ -66,15 +66,15 @@ class CrearMensajeContactoView(CreateAPIView):
 
         try:
             perfil_empresa = PerfilEmpresa.objects.first()
-            if perfil_empresa:
-                enviar_correos_contacto(
-                    mensaje,
-                    perfil_empresa,
-                    base_url=request.build_absolute_uri('/'),
-                )
-            else:
-                correo_enviado = False
-                mensaje_respuesta = 'Tu mensaje se guardo, pero no existe un perfil de empresa configurado para enviar correos.'
+            enviar_correos_contacto(
+                mensaje,
+                perfil_empresa,
+                base_url=request.build_absolute_uri('/'),
+            )
+        except ValueError as exc:
+            correo_enviado = False
+            mensaje_respuesta = f'Tu mensaje se guardo, pero no se enviaron los correos: {exc}'
+            logger.warning('Validacion de correos en formulario de contacto: %s', exc)
         except Exception:
             correo_enviado = False
             mensaje_respuesta = 'Tu mensaje se guardo, pero no se pudieron enviar los correos.'
