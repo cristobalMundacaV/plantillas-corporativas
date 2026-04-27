@@ -1,5 +1,6 @@
 from pathlib import Path
 import os
+from urllib.parse import urlparse
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -69,15 +70,49 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
-DATABASES = {
-    'default': {
-        'ENGINE': os.getenv('DB_ENGINE', 'django.db.backends.sqlite3'),
-        'NAME': os.getenv('DB_NAME', str(BASE_DIR / 'db.sqlite3')),
+def get_database_config():
+    database_url = (
+        os.getenv('DATABASE_URL')
+        or os.getenv('POSTGRES_URL')
+        or os.getenv('POSTGRES_URL_NON_POOLING')
+    )
+
+    if database_url:
+        parsed = urlparse(database_url)
+        return {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': parsed.path.lstrip('/'),
+            'USER': parsed.username or '',
+            'PASSWORD': parsed.password or '',
+            'HOST': parsed.hostname or '',
+            'PORT': parsed.port or '',
+            'OPTIONS': {'sslmode': 'require'},
+        }
+
+    db_engine = os.getenv('DB_ENGINE', 'django.db.backends.sqlite3')
+    db_host = os.getenv('DB_HOST', '')
+
+    if os.getenv('VERCEL') and db_host == 'db':
+        db_engine = 'django.db.backends.sqlite3'
+        db_host = ''
+
+    sqlite_name = os.getenv(
+        'DB_NAME',
+        '/tmp/db.sqlite3' if os.getenv('VERCEL') else str(BASE_DIR / 'db.sqlite3')
+    )
+
+    return {
+        'ENGINE': db_engine,
+        'NAME': sqlite_name,
         'USER': os.getenv('DB_USER', ''),
         'PASSWORD': os.getenv('DB_PASSWORD', ''),
-        'HOST': os.getenv('DB_HOST', ''),
+        'HOST': db_host,
         'PORT': os.getenv('DB_PORT', ''),
     }
+
+
+DATABASES = {
+    'default': get_database_config()
 }
 
 AUTH_PASSWORD_VALIDATORS = [

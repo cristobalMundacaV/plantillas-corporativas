@@ -19,3 +19,5 @@ RUN pip install --no-cache-dir --upgrade pip && \
 COPY . .
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
+
+CMD ["/entrypoint.sh"]
