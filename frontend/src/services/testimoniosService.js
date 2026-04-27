@@ -1,11 +1,11 @@
-﻿import api from './api';
+import api, { extraerLista } from './api';
 
 export const getTestimonios = async () => {
     const response = await api.get('/testimonios/');
-    return response.data;
+    return extraerLista(response.data, 'testimonios');
 };
 
 export const getTestimoniosDestacados = async () => {
     const response = await api.get('/testimonios/destacados/');
-    return response.data;
+    return extraerLista(response.data, 'testimonios destacados');
 };

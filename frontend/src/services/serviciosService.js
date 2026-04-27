@@ -1,8 +1,8 @@
-import api from './api';
+import api, { extraerLista } from './api';
 
 export const obtenerServicios = async () => {
     const response = await api.get('/servicios/');
-    return response.data;
+    return extraerLista(response.data, 'servicios');
 };
 
 export const obtenerDetalleServicio = async (slug) => {
