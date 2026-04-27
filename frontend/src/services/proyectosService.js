@@ -1,13 +1,13 @@
-import api, { extraerLista } from './api';
+import api from './api';
 
 export const getProyectos = async () => {
     const response = await api.get('/proyectos/');
-    return extraerLista(response.data, 'proyectos');
+    return response.data;
 };
 
 export const getProyectosDestacados = async () => {
     const response = await api.get('/proyectos/destacados/');
-    return extraerLista(response.data, 'proyectos destacados');
+    return response.data;
 };
 
 export const obtenerDetalleProyecto = async (slug) => {

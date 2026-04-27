@@ -8,12 +8,6 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'dev-insegura-cambiar-en-produccion'
 DEBUG = os.getenv('DEBUG', 'True') == 'True'
 
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '127.0.0.1,localhost').split(',')
-if '.vercel.app' not in ALLOWED_HOSTS:
-    ALLOWED_HOSTS.append('.vercel.app')
-
-vercel_url = os.getenv('VERCEL_URL')
-if vercel_url and vercel_url not in ALLOWED_HOSTS:
-    ALLOWED_HOSTS.append(vercel_url)
 
 CSRF_TRUSTED_ORIGINS = os.getenv(
     'CSRF_TRUSTED_ORIGINS',

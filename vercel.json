@@ -9,23 +9,5 @@
       "entrypoint": "backend",
       "routePrefix": "/backend"
     }
-  },
-  "rewrites": [
-    {
-      "source": "/api/:path*",
-      "destination": "/backend/api/:path*"
-    },
-    {
-      "source": "/admin/:path*",
-      "destination": "/backend/admin/:path*"
-    },
-    {
-      "source": "/media/:path*",
-      "destination": "/backend/media/:path*"
-    },
-    {
-      "source": "/static/:path*",
-      "destination": "/backend/static/:path*"
-    }
-  ]
+  }
 }
