@@ -14,7 +14,3 @@ from django.core.wsgi import get_wsgi_application
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
 
 application = get_wsgi_application()
-
-from config.bootstrap import bootstrap_sqlite_database
-
-bootstrap_sqlite_database()
