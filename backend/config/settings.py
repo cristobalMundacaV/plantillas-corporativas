@@ -4,15 +4,17 @@ from urllib.parse import urlparse
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+IS_SERVERLESS = bool(os.getenv('VERCEL') or os.getenv('AWS_LAMBDA_FUNCTION_NAME') or str(BASE_DIR) == '/var/task')
+
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'dev-insegura-cambiar-en-produccion')
 
-DEBUG = os.getenv('DEBUG', 'True') == 'True'
+DEBUG = os.getenv('DEBUG', 'False' if IS_SERVERLESS else 'True') == 'True'
 
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '127.0.0.1,localhost').split(',')
 if '.vercel.app' not in ALLOWED_HOSTS:
     ALLOWED_HOSTS.append('.vercel.app')
 
-vercel_url = os.getenv('VERCEL_URL')
+vercel_url = os.getenv('VERCEL_URL') or os.getenv('VERCEL_PROJECT_PRODUCTION_URL')
 if vercel_url and vercel_url not in ALLOWED_HOSTS:
     ALLOWED_HOSTS.append(vercel_url)
 
@@ -20,6 +22,9 @@ CSRF_TRUSTED_ORIGINS = os.getenv(
     'CSRF_TRUSTED_ORIGINS',
     'http://127.0.0.1,http://localhost'
 ).split(',')
+for origin in ('https://*.vercel.app',):
+    if origin not in CSRF_TRUSTED_ORIGINS:
+        CSRF_TRUSTED_ORIGINS.append(origin)
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
@@ -92,18 +97,21 @@ def get_database_config():
     db_engine = os.getenv('DB_ENGINE', 'django.db.backends.sqlite3')
     db_host = os.getenv('DB_HOST', '')
 
-    if os.getenv('VERCEL') and db_host == 'db':
+    if IS_SERVERLESS and db_host == 'db':
         db_engine = 'django.db.backends.sqlite3'
         db_host = ''
 
-    sqlite_name = os.getenv(
-        'DB_NAME',
-        '/tmp/db.sqlite3' if os.getenv('VERCEL') else str(BASE_DIR / 'db.sqlite3')
-    )
+    db_name = os.getenv('DB_NAME')
+    if db_engine == 'django.db.backends.sqlite3':
+        if IS_SERVERLESS:
+            if not db_name or not os.path.isabs(db_name) or db_name.startswith(str(BASE_DIR)):
+                db_name = '/tmp/db.sqlite3'
+        else:
+            db_name = db_name or str(BASE_DIR / 'db.sqlite3')
 
     return {
         'ENGINE': db_engine,
-        'NAME': sqlite_name,
+        'NAME': db_name,
         'USER': os.getenv('DB_USER', ''),
         'PASSWORD': os.getenv('DB_PASSWORD', ''),
         'HOST': db_host,
