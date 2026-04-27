@@ -7,4 +7,12 @@ class Migration(migrations.Migration):
         ('core', '0004_remove_perfilempresa_ubicacion'),
     ]
 
-    operations = []
+    operations = [
+        migrations.RunSQL(
+            sql="""
+                ALTER TABLE core_perfilempresa
+                DROP COLUMN IF EXISTS favicon CASCADE;
+            """,
+            reverse_sql=migrations.RunSQL.noop,
+        ),
+    ]
