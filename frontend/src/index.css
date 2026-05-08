@@ -6,6 +6,7 @@ html {
 
 .servicios-swiper,
 .testimonios-swiper {
+  --swiper-navigation-size: 14px;
   padding-left: 4px;
   padding-right: 4px;
 }
@@ -14,8 +15,8 @@ html {
 .servicios-swiper .swiper-button-next,
 .testimonios-swiper .swiper-button-prev,
 .testimonios-swiper .swiper-button-next {
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
   border-radius: 9999px;
   background: rgba(255, 255, 255, 0.92);
   box-shadow: 0 10px 30px rgba(15, 23, 42, 0.12);
@@ -27,7 +28,7 @@ html {
 .servicios-swiper .swiper-button-next::after,
 .testimonios-swiper .swiper-button-prev::after,
 .testimonios-swiper .swiper-button-next::after {
-  font-size: 16px;
+  font-size: 12px;
   font-weight: 800;
   color: #2563eb;
 }
