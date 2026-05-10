@@ -26,12 +26,14 @@ function ProyectoCard({ proyecto }) {
               type="button"
               layoutId={layoutIdImagen}
               onClick={() => setModalImagenAbierta(true)}
-              className="group relative block w-full overflow-hidden rounded-xl"
+              className="group relative block aspect-[16/10] w-full overflow-hidden rounded-xl"
             >
               <img
                 src={urlImagenTrabajo}
                 alt={proyecto.titulo}
-                className="h-auto w-full rounded-xl transition duration-500 group-hover:scale-[1.02]"
+                loading="lazy"
+                decoding="async"
+                className="h-full w-full rounded-xl object-cover transition duration-500 group-hover:scale-[1.02]"
               />
 
               <div className="absolute inset-0 flex items-center justify-center bg-slate-900/0 transition duration-300 group-hover:bg-slate-900/20">

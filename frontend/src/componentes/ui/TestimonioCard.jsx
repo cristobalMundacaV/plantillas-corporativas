@@ -31,6 +31,8 @@ function TestimonioCard({ testimonio }) {
               <img
                 src={urlImagenTrabajo}
                 alt={`Trabajo relacionado con ${testimonio.nombre_cliente}`}
+                loading="lazy"
+                decoding="async"
                 className="h-auto w-full rounded-xl"
               />
 

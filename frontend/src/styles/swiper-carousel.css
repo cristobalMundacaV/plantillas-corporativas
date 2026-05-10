@@ -10,10 +10,9 @@
   --carousel-edge-color: #ffffff;
   --carousel-side-space: clamp(56px, 5vw, 96px);
   position: relative;
-  width: 100vw;
-  max-width: 100vw;
-  margin-left: 50%;
-  transform: translateX(-50%);
+  max-width: none;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
   padding-left: var(--carousel-side-space);
   padding-right: var(--carousel-side-space);
 }

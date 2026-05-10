@@ -18,6 +18,8 @@ function ServicioCard({ servicio }) {
           <img
             src={urlImagen}
             alt={servicio.titulo}
+            loading="lazy"
+            decoding="async"
             className="h-56 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-60"
           />
         ) : (
