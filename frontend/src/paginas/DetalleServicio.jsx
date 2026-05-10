@@ -71,7 +71,7 @@ const [error, setError] = useState('');
     return (
     <div className="min-h-screen bg-white text-slate-900">
         <section className="bg-slate-950 text-white">
-        <RevealOnScroll className="mx-auto max-w-6xl px-6 py-20">
+        <RevealOnScroll className="mx-auto max-w-[96rem] px-6 py-20 sm:px-8 lg:px-12">
             <Link
             to="/"
             className="mb-8 inline-block text-sm font-medium text-slate-300 transition hover:text-white"
