@@ -64,16 +64,16 @@ function GaleriaProyecto({ imagenes = [], tituloProyecto }) {
                   </div>
 
                   <div
-                    className={`flex items-center bg-sky-100/70 p-8 md:p-10 ${
+                    className={`flex items-center bg-slate-950 p-8 text-white md:p-10 ${
                       invertido ? 'md:order-1' : 'md:order-2'
                     }`}
                   >
                     <div>
-                      <h3 className="text-2xl font-bold text-slate-900 md:text-3xl">
+                      <h3 className="text-2xl font-bold text-white md:text-3xl">
                         {item.titulo || 'Vista del proyecto'}
                       </h3>
 
-                      <p className="mt-5 text-base leading-8 text-slate-700">
+                      <p className="mt-5 text-base leading-8 text-slate-300">
                         {item.descripcion ||
                           `Imagen relacionada con el proyecto ${tituloProyecto}, utilizada para mostrar avances, resultados o material visual asociado.`}
                       </p>
@@ -98,4 +98,3 @@ function GaleriaProyecto({ imagenes = [], tituloProyecto }) {
 }
 
 export default GaleriaProyecto;
-
