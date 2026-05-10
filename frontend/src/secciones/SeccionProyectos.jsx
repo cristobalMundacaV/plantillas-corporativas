@@ -19,6 +19,7 @@ function SeccionProyectos() {
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState('');
   const puedeUsarLoop = proyectos.length > 3;
+  const usaAnchoCompleto = proyectos.length > 3;
 
   useEffect(() => {
     const cargarProyectos = async () => {
@@ -66,37 +67,43 @@ function SeccionProyectos() {
         )}
 
         {!cargando && !error && proyectos.length > 0 && (
-          <Swiper
-            modules={[Navigation, Pagination, Autoplay]}
-            navigation
-            pagination={{ clickable: true }}
-            autoplay={{
-              delay: 5000,
-              disableOnInteraction: false,
-            }}
-            loop={puedeUsarLoop}
-            spaceBetween={20}
-            slidesPerView={1}
-            breakpoints={{
-              768: {
-                slidesPerView: 2,
-                spaceBetween: 24,
-              },
-              1200: {
-                slidesPerView: 3,
-                spaceBetween: 24,
-              },
-            }}
-            className="testimonios-swiper h-full pb-14"
+          <div
+            className={`relative ${
+              usaAnchoCompleto ? 'swiper-carousel-full-width' : ''
+            }`}
           >
-            {proyectos.map((proyecto) => (
-              <SwiperSlide key={proyecto.id} className="h-auto flex">
-                <div className="h-full w-full px-1 pb-2">
-                  <ProyectoCard proyecto={proyecto} />
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
+            <Swiper
+              modules={[Navigation, Pagination, Autoplay]}
+              navigation
+              pagination={{ clickable: true }}
+              autoplay={{
+                delay: 5000,
+                disableOnInteraction: false,
+              }}
+              loop={puedeUsarLoop}
+              spaceBetween={20}
+              slidesPerView={1}
+              breakpoints={{
+                768: {
+                  slidesPerView: 2,
+                  spaceBetween: 24,
+                },
+                1200: {
+                  slidesPerView: 3,
+                  spaceBetween: 24,
+                },
+              }}
+              className="testimonios-swiper h-full pb-14"
+            >
+              {proyectos.map((proyecto) => (
+                <SwiperSlide key={proyecto.id} className="h-auto flex">
+                  <div className="h-full w-full px-1 pb-2">
+                    <ProyectoCard proyecto={proyecto} />
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
         )}
       </div>
     </section>

@@ -14,6 +14,7 @@ function SeccionServicio() {
   const [servicios, setServicios] = useState([]);
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState('');
+  const usaAnchoCompleto = servicios.length > 3;
 
   useEffect(() => {
     const cargarServicios = async () => {
@@ -49,7 +50,11 @@ function SeccionServicio() {
         )}
 
         {!cargando && !error && servicios.length > 0 && (
-          <div className="relative">
+          <div
+            className={`relative ${
+              usaAnchoCompleto ? 'swiper-carousel-full-width' : ''
+            }`}
+          >
             <Swiper
               modules={[Navigation, Pagination]}
               navigation
