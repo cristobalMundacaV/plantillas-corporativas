@@ -43,6 +43,11 @@
   width: min(410px, calc(100vw - 32px));
 }
 
+.swiper-carousel-full-width .servicios-swiper,
+.swiper-carousel-full-width .testimonios-swiper {
+  overflow: visible;
+}
+
 .swiper-carousel-full-width .swiper-slide {
   transition: opacity 260ms ease, transform 260ms ease;
 }
@@ -114,11 +119,11 @@
 }
 
 .swiper-carousel-full-width .swiper-button-prev {
-  left: calc(var(--carousel-side-space) / 2 - 22px);
+  left: calc((var(--carousel-side-space) / -2) - 22px);
 }
 
 .swiper-carousel-full-width .swiper-button-next {
-  right: calc(var(--carousel-side-space) / 2 - 22px);
+  right: calc((var(--carousel-side-space) / -2) - 22px);
 }
 
 .servicios-swiper .swiper-pagination,
