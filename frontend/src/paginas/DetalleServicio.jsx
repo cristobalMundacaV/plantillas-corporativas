@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { obtenerDetalleServicio } from '../services/serviciosService';
 import { obtenerPerfilEmpresa } from '../services/coreService';
+import RevealOnScroll from '../componentes/common/RevealOnScroll';
 import GaleriaServicio from '../componentes/ui/GaleriaServicio';
 import Footer from '../componentes/layout/Footer';
 import { getMediaUrl } from '../utils/media';
@@ -70,7 +71,7 @@ const [error, setError] = useState('');
     return (
     <div className="min-h-screen bg-white text-slate-900">
         <section className="bg-slate-950 text-white">
-        <div className="mx-auto max-w-6xl px-6 py-20">
+        <RevealOnScroll className="mx-auto max-w-6xl px-6 py-20">
             <Link
             to="/"
             className="mb-8 inline-block text-sm font-medium text-slate-300 transition hover:text-white"
@@ -79,7 +80,7 @@ const [error, setError] = useState('');
             </Link>
 
             <div className="grid items-center gap-12 md:grid-cols-2">
-            <div>
+            <RevealOnScroll delay={0.06}>
                 <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-slate-400">
                 Servicio
                 </p>
@@ -93,9 +94,10 @@ const [error, setError] = useState('');
                     {servicio.descripcion_completa || servicio.descripcion_corta}
                 </p>
                 </div>
-            </div>
+            </RevealOnScroll>
 
             {urlImagen && (
+                <RevealOnScroll delay={0.12}>
                 <div className="overflow-hidden rounded-3xl border border-white/10 bg-white/5 shadow-2xl">
                 <img
                     src={urlImagen}
@@ -103,9 +105,10 @@ const [error, setError] = useState('');
                     className="h-full w-full object-cover"
                 />
                 </div>
+                </RevealOnScroll>
             )}
             </div>
-        </div>
+        </RevealOnScroll>
         </section>
 
         <GaleriaServicio
@@ -113,7 +116,7 @@ const [error, setError] = useState('');
         tituloServicio={servicio.titulo}
         />
 
-        <section className="px-6 py-24">
+        <RevealOnScroll className="px-6 py-24">
         <div className="mx-auto max-w-5xl rounded-[2rem] bg-slate-950 px-8 py-14 text-center text-white shadow-2xl md:px-12">
             <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-slate-400">
             Sigamos avanzando
@@ -144,7 +147,7 @@ const [error, setError] = useState('');
             </Link>
             </div>
         </div>
-        </section>
+        </RevealOnScroll>
         <Footer perfil={perfil} />
     </div>
     );

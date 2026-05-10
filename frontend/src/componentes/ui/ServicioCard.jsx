@@ -1,11 +1,18 @@
 ﻿import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { getMediaUrl } from '../../utils/media';
 
 function ServicioCard({ servicio }) {
   const urlImagen = getMediaUrl(servicio?.imagen);
 
   return (
-    <article className="group flex h-full flex-col overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl">
+    <motion.article
+      className="group flex h-full flex-col overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl"
+      initial={{ opacity: 0, y: 32 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.25 }}
+      transition={{ duration: 0.55, ease: 'easeOut' }}
+    >
       <div className="relative overflow-hidden bg-slate-100">
         {urlImagen ? (
           <img
@@ -48,7 +55,7 @@ function ServicioCard({ servicio }) {
           </Link>
         </div>
       </div>
-    </article>
+    </motion.article>
   );
 }
 

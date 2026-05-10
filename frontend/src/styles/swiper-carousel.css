@@ -1,0 +1,93 @@
+.servicios-swiper,
+.testimonios-swiper {
+  --swiper-navigation-size: 10px;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-bottom: 50px;
+}
+
+.servicios-swiper .swiper-button-prev,
+.servicios-swiper .swiper-button-next,
+.testimonios-swiper .swiper-button-prev,
+.testimonios-swiper .swiper-button-next {
+  width: 30px;
+  height: 30px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.12);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  backdrop-filter: blur(8px);
+  color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.servicios-swiper .swiper-button-prev::after,
+.servicios-swiper .swiper-button-next::after,
+.testimonios-swiper .swiper-button-prev::after,
+.testimonios-swiper .swiper-button-next::after {
+  content: "" !important;
+  width: 8px;
+  height: 8px;
+  border-top: 2px solid #2563eb;
+  border-right: 2px solid #2563eb;
+  font-family: inherit;
+  font-size: 0 !important;
+  line-height: 0;
+}
+
+.servicios-swiper .swiper-button-prev::after,
+.testimonios-swiper .swiper-button-prev::after {
+  transform: rotate(-135deg);
+  margin-left: 3px;
+}
+
+.servicios-swiper .swiper-button-next::after,
+.testimonios-swiper .swiper-button-next::after {
+  transform: rotate(45deg);
+  margin-right: 3px;
+}
+
+.servicios-swiper .swiper-button-prev,
+.testimonios-swiper .swiper-button-prev {
+  left: 6px;
+}
+
+.servicios-swiper .swiper-button-next,
+.testimonios-swiper .swiper-button-next {
+  right: 6px;
+}
+
+.servicios-swiper .swiper-pagination,
+.testimonios-swiper .swiper-pagination {
+  position: absolute;
+  bottom: 10px !important;
+}
+
+.servicios-swiper .swiper-pagination-bullet,
+.testimonios-swiper .swiper-pagination-bullet {
+  width: 9px;
+  height: 9px;
+  background: #cbd5e1;
+  opacity: 1;
+}
+
+.servicios-swiper .swiper-pagination-bullet-active,
+.testimonios-swiper .swiper-pagination-bullet-active {
+  background: #2563eb;
+}
+
+@media (max-width: 767px) {
+  .servicios-swiper .swiper-button-prev,
+  .servicios-swiper .swiper-button-next,
+  .testimonios-swiper .swiper-button-prev,
+  .testimonios-swiper .swiper-button-next {
+    display: none !important;
+  }
+
+  .servicios-swiper,
+  .testimonios-swiper {
+    padding-bottom: 44px;
+  }
+}

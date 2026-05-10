@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Expand } from 'lucide-react';
 import ModalImagen from '../common/ModalImagen';
+import RevealOnScroll from '../common/RevealOnScroll';
 import { getMediaUrl } from '../../utils/media';
 
 function GaleriaServicio({ imagenes = [], tituloServicio }) {
@@ -16,7 +17,7 @@ function GaleriaServicio({ imagenes = [], tituloServicio }) {
     return (
     <>
         <section className="mx-auto max-w-6xl px-6 py-20">
-        <div className="mb-12">
+        <RevealOnScroll className="mb-12">
             <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">
             Portafolio visual
             </p>
@@ -26,7 +27,7 @@ function GaleriaServicio({ imagenes = [], tituloServicio }) {
             <p className="mt-4 max-w-3xl text-base leading-8 text-slate-600">
             Esta sección muestra el paso a paso de nuestro proceso, junto con evidencias visuales y resultados reales que garantizan la calidad de nuestros servicios.
             </p>
-        </div>
+        </RevealOnScroll>
 
         <div className="space-y-10">
             {imagenes.map((item, index) => {
@@ -34,10 +35,8 @@ function GaleriaServicio({ imagenes = [], tituloServicio }) {
             const invertido = index % 2 !== 0;
 
             return (
-                <article
-                key={item.id}
-                className="overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl"
-                >
+                <RevealOnScroll key={item.id} amount={0.2} delay={index * 0.04}>
+                <article className="overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl">
                 <div className="grid md:grid-cols-2">
                   {/* Imagen */}
                     <div
@@ -84,6 +83,7 @@ function GaleriaServicio({ imagenes = [], tituloServicio }) {
                     </div>
                 </div>
                 </article>
+                </RevealOnScroll>
             );
             })}
         </div>

@@ -4,6 +4,7 @@ import { enviarMensajeContacto } from '../services/contactoService';
 import BarraNavegacion from '../componentes/layout/BarraNavegacion';
 import Footer from '../componentes/layout/Footer';
 import { obtenerPerfilEmpresa } from '../services/coreService';
+import RevealOnScroll from '../componentes/common/RevealOnScroll';
 
 function Contacto() {
   const [perfil, setPerfil] = useState(null);
@@ -105,7 +106,7 @@ function Contacto() {
       <BarraNavegacion perfil={perfil} cargando={cargandoPerfil} />
       <section className="min-h-screen overflow-x-hidden bg-slate-50 pb-20 pt-24 sm:pt-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
-          <div className="mb-12 text-center sm:mb-14">
+          <RevealOnScroll className="mb-12 text-center sm:mb-14">
             <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">
               Contacto
             </p>
@@ -116,10 +117,10 @@ function Contacto() {
               Cuentanos que necesitas y te responderemos con una propuesta clara,
               moderna y pensada para llevar tu negocio a un siguiente nivel.
             </p>
-          </div>
+          </RevealOnScroll>
 
           <div className="grid items-start gap-6 sm:gap-8 lg:grid-cols-2 lg:gap-10">
-            <div className="min-w-0">
+            <RevealOnScroll className="min-w-0" delay={0.06}>
               <div className="mx-auto w-full max-w-xl rounded-[2rem] bg-slate-950 p-7 text-white shadow-2xl sm:p-8 lg:max-w-none lg:p-10">
                 <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-slate-400">
                   Conversemos
@@ -164,9 +165,9 @@ function Contacto() {
                   </div>
                 </div>
               </div>
-            </div>
+            </RevealOnScroll>
 
-            <div className="min-w-0">
+            <RevealOnScroll className="min-w-0" delay={0.12}>
               <div className="mx-auto w-full max-w-xl rounded-[2rem] border border-slate-200 bg-white p-6 shadow-xl sm:p-8 lg:max-w-none lg:p-10">
                 <h3 className="text-2xl font-bold text-slate-900">
                   ¿Listo para el primer paso?
@@ -244,7 +245,7 @@ function Contacto() {
                   </button>
                 </form>
               </div>
-            </div>
+            </RevealOnScroll>
           </div>
         </div>
       </section>

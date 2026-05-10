@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Expand } from 'lucide-react';
 import ModalImagen from '../common/ModalImagen';
+import RevealOnScroll from '../common/RevealOnScroll';
 import { getMediaUrl } from '../../utils/media';
 
 function GaleriaProyecto({ imagenes = [], tituloProyecto }) {
@@ -16,7 +17,7 @@ function GaleriaProyecto({ imagenes = [], tituloProyecto }) {
   return (
     <>
       <section className="mx-auto max-w-6xl px-6 py-20">
-        <div className="mb-12">
+        <RevealOnScroll className="mb-12">
           <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">
             Portafolio visual
           </p>
@@ -27,7 +28,7 @@ function GaleriaProyecto({ imagenes = [], tituloProyecto }) {
             Esta seccion muestra el paso a paso del proyecto, junto con evidencias visuales y
             resultados reales que ayudan a entender el alcance de cada entrega.
           </p>
-        </div>
+        </RevealOnScroll>
 
         <div className="space-y-10">
           {imagenes.map((item, index) => {
@@ -35,10 +36,8 @@ function GaleriaProyecto({ imagenes = [], tituloProyecto }) {
             const invertido = index % 2 !== 0;
 
             return (
-              <article
-                key={item.id}
-                className="overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-sm"
-              >
+              <RevealOnScroll key={item.id} amount={0.2} delay={index * 0.04}>
+              <article className="overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-sm">
                 <div className="grid md:grid-cols-2">
                   <div
                     className={`bg-white p-6 md:p-8 ${
@@ -82,6 +81,7 @@ function GaleriaProyecto({ imagenes = [], tituloProyecto }) {
                   </div>
                 </div>
               </article>
+              </RevealOnScroll>
             );
           })}
         </div>

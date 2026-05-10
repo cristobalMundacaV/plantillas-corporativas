@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Expand } from 'lucide-react';
 import { obtenerDetalleProyecto } from '../services/proyectosService';
 import { obtenerPerfilEmpresa } from '../services/coreService';
+import RevealOnScroll from '../componentes/common/RevealOnScroll';
 import ModalImagen from '../componentes/common/ModalImagen';
 import GaleriaProyecto from '../componentes/ui/GaleriaProyecto';
 import Footer from '../componentes/layout/Footer';
@@ -75,7 +76,7 @@ function DetalleProyecto() {
   return (
     <div className="min-h-screen bg-white text-slate-900">
       <section className="bg-slate-950 text-white">
-        <div className="mx-auto max-w-6xl px-6 py-20">
+        <RevealOnScroll className="mx-auto max-w-6xl px-6 py-20">
           <Link
             to="/"
             className="mb-8 inline-block text-sm font-medium text-slate-300 transition hover:text-white"
@@ -84,7 +85,7 @@ function DetalleProyecto() {
           </Link>
 
           <div className="grid items-center gap-12 md:grid-cols-2">
-            <div>
+            <RevealOnScroll delay={0.06}>
               <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-slate-400">
                 Proyecto{proyecto.tipo_proyecto ? ` - ${proyecto.tipo_proyecto}` : ''}
               </p>
@@ -105,9 +106,10 @@ function DetalleProyecto() {
                   </p>
                 )}
               </div>
-            </div>
+            </RevealOnScroll>
 
             {urlImagen && (
+              <RevealOnScroll delay={0.12}>
               <div className="relative flex min-h-[460px] items-center justify-end md:min-h-[500px]">
                 <div className="relative w-[135%] translate-x-16 md:w-[125%] md:translate-x-24">
                   <div className="relative rounded-2xl border border-white/10 bg-white/5 p-2 shadow-[0_30px_80px_rgba(0,0,0,0.9)] backdrop-blur-sm">
@@ -132,9 +134,10 @@ function DetalleProyecto() {
                   </div>
                 </div>
               </div>
+              </RevealOnScroll>
             )}
           </div>
-        </div>
+        </RevealOnScroll>
       </section>
 
       <GaleriaProyecto
@@ -142,7 +145,7 @@ function DetalleProyecto() {
         tituloProyecto={proyecto.titulo}
       />
 
-      <section className="px-6 py-24">
+      <RevealOnScroll className="px-6 py-24">
         <div className="mx-auto max-w-5xl rounded-[2rem] bg-slate-950 px-8 py-14 text-center text-white shadow-2xl md:px-12">
           <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-slate-400">
             Sigamos avanzando
@@ -153,7 +156,7 @@ function DetalleProyecto() {
           </h2>
 
           <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-slate-300">
-            Podemos ayudarte a construir una solucion moderna, profesional y escalable,
+      </RevealOnScroll>
             pensada para generar valor real y una presencia digital potente.
           </p>
 

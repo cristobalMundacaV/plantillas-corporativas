@@ -8,6 +8,7 @@ import { obtenerServicios } from '../services/serviciosService';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import '../styles/swiper-carousel.css';
 
 function SeccionServicio() {
   const [servicios, setServicios] = useState([]);

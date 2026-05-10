@@ -13,7 +13,13 @@ function ProyectoCard({ proyecto }) {
 
   return (
     <>
-      <div className="group flex h-full flex-col rounded-[2rem] border border-slate-200 bg-white p-5 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl sm:p-6">
+      <motion.div
+        className="group flex h-full flex-col rounded-[2rem] border border-slate-200 bg-white p-5 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl sm:p-6"
+        initial={{ opacity: 0, y: 32 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.25 }}
+        transition={{ duration: 0.55, ease: 'easeOut' }}
+      >
         {urlImagenTrabajo && (
           <div className="mb-5 overflow-hidden rounded-2xl bg-slate-100">
             <motion.button
@@ -98,7 +104,7 @@ function ProyectoCard({ proyecto }) {
             </a>
           )}
         </div>
-      </div>
+      </motion.div>
 
       <ModalImagen
         abierto={modalImagenAbierta}
