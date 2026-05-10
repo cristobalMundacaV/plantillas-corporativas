@@ -65,7 +65,7 @@ function GaleriaServicio({ imagenes = [], tituloServicio }) {
 
                   {/* Texto */}
                     <div
-                    className={`flex items-center bg-slate-950 p-8 text-white md:p-10 ${
+                    className={`flex items-center bg-blue-950 p-8 text-white md:p-10 ${
                         invertido ? 'md:order-1' : 'md:order-2'
                     }`}
                     >
