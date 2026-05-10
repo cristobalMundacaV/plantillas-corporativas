@@ -6,7 +6,7 @@ html {
 
 .servicios-swiper,
 .testimonios-swiper {
-  --swiper-navigation-size: 14px;
+  --swiper-navigation-size: 10px;
   padding-left: 4px;
   padding-right: 4px;
 }
@@ -15,22 +15,40 @@ html {
 .servicios-swiper .swiper-button-next,
 .testimonios-swiper .swiper-button-prev,
 .testimonios-swiper .swiper-button-next {
-  width: 32px;
-  height: 32px;
+  width: 30px;
+  height: 30px;
   border-radius: 9999px;
   background: rgba(255, 255, 255, 0.92);
   box-shadow: 0 10px 30px rgba(15, 23, 42, 0.12);
   border: 1px solid rgba(226, 232, 240, 0.9);
   backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .servicios-swiper .swiper-button-prev::after,
 .servicios-swiper .swiper-button-next::after,
 .testimonios-swiper .swiper-button-prev::after,
 .testimonios-swiper .swiper-button-next::after {
-  font-size: 12px;
-  font-weight: 800;
-  color: #2563eb;
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-top: 2px solid #2563eb;
+  border-right: 2px solid #2563eb;
+  font-size: 0;
+}
+
+.servicios-swiper .swiper-button-prev::after,
+.testimonios-swiper .swiper-button-prev::after {
+  transform: rotate(-135deg);
+  margin-left: 3px;
+}
+
+.servicios-swiper .swiper-button-next::after,
+.testimonios-swiper .swiper-button-next::after {
+  transform: rotate(45deg);
+  margin-right: 3px;
 }
 
 .servicios-swiper .swiper-button-prev,
