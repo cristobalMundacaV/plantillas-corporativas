@@ -8,13 +8,14 @@
 
 .swiper-carousel-full-width {
   --carousel-edge-color: #ffffff;
+  --carousel-side-space: clamp(56px, 5vw, 96px);
   position: relative;
   width: 100vw;
   max-width: 100vw;
   margin-left: 50%;
   transform: translateX(-50%);
-  padding-left: 16px;
-  padding-right: 16px;
+  padding-left: var(--carousel-side-space);
+  padding-right: var(--carousel-side-space);
 }
 
 .swiper-carousel-full-width::before,
@@ -24,7 +25,7 @@
   top: 0;
   bottom: 50px;
   z-index: 5;
-  width: min(96px, 18vw);
+  width: var(--carousel-side-space);
   pointer-events: none;
 }
 
@@ -48,8 +49,7 @@
 
 @media (min-width: 640px) {
   .swiper-carousel-full-width {
-    padding-left: 24px;
-    padding-right: 24px;
+    --carousel-side-space: clamp(72px, 6vw, 128px);
   }
 }
 
@@ -57,8 +57,8 @@
 .servicios-swiper .swiper-button-next,
 .testimonios-swiper .swiper-button-prev,
 .testimonios-swiper .swiper-button-next {
-  width: 30px;
-  height: 30px;
+  width: 44px;
+  height: 44px;
   border-radius: 9999px;
   background: rgba(255, 255, 255, 0.92);
   box-shadow: 0 10px 30px rgba(15, 23, 42, 0.12);
@@ -71,15 +71,20 @@
   z-index: 10;
 }
 
+.swiper-carousel-full-width .swiper-button-prev,
+.swiper-carousel-full-width .swiper-button-next {
+  z-index: 20;
+}
+
 .servicios-swiper .swiper-button-prev::after,
 .servicios-swiper .swiper-button-next::after,
 .testimonios-swiper .swiper-button-prev::after,
 .testimonios-swiper .swiper-button-next::after {
   content: "" !important;
-  width: 8px;
-  height: 8px;
-  border-top: 2px solid #2563eb;
-  border-right: 2px solid #2563eb;
+  width: 11px;
+  height: 11px;
+  border-top: 2.5px solid #2563eb;
+  border-right: 2.5px solid #2563eb;
   font-family: inherit;
   font-size: 0 !important;
   line-height: 0;
@@ -100,12 +105,20 @@
 
 .servicios-swiper .swiper-button-prev,
 .testimonios-swiper .swiper-button-prev {
-  left: 6px;
+  left: 12px;
 }
 
 .servicios-swiper .swiper-button-next,
 .testimonios-swiper .swiper-button-next {
-  right: 6px;
+  right: 12px;
+}
+
+.swiper-carousel-full-width .swiper-button-prev {
+  left: calc(var(--carousel-side-space) / 2 - 22px);
+}
+
+.swiper-carousel-full-width .swiper-button-next {
+  right: calc(var(--carousel-side-space) / 2 - 22px);
 }
 
 .servicios-swiper .swiper-pagination,
