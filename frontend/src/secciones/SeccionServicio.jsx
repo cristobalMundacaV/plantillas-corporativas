@@ -54,31 +54,45 @@ function SeccionServicio() {
             className={`relative ${
               usaAnchoCompleto ? 'swiper-carousel-full-width' : ''
             }`}
+            style={
+              usaAnchoCompleto
+                ? { '--carousel-edge-color': '#f8fafc' }
+                : undefined
+            }
           >
             <Swiper
               modules={[Navigation, Pagination]}
               navigation
               pagination={{ clickable: true }}
               spaceBetween={20}
-              slidesPerView={1}
-              breakpoints={{
-                640: {
-                  slidesPerView: 1,
-                  spaceBetween: 20,
-                },
-                768: {
-                  slidesPerView: 2,
-                  spaceBetween: 24,
-                },
-                1200: {
-                  slidesPerView: 3,
-                  spaceBetween: 24,
-                },
-              }}
+              slidesPerView={usaAnchoCompleto ? 'auto' : 1}
+              breakpoints={
+                usaAnchoCompleto
+                  ? undefined
+                  : {
+                      640: {
+                        slidesPerView: 1,
+                        spaceBetween: 20,
+                      },
+                      768: {
+                        slidesPerView: 2,
+                        spaceBetween: 24,
+                      },
+                      1200: {
+                        slidesPerView: 3,
+                        spaceBetween: 24,
+                      },
+                    }
+              }
               className="servicios-swiper h-full pb-14"
             >
               {servicios.map((servicio) => (
-                <SwiperSlide key={servicio.id} className="h-auto flex">
+                <SwiperSlide
+                  key={servicio.id}
+                  className={`h-auto flex ${
+                    usaAnchoCompleto ? 'swiper-carousel-slide-fixed' : ''
+                  }`}
+                >
                   <div className="h-full w-full px-1 pb-2">
                     <ServicioCard servicio={servicio} />
                   </div>
