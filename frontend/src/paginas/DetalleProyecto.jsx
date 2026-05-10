@@ -156,7 +156,6 @@ function DetalleProyecto() {
           </h2>
 
           <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-slate-300">
-      </RevealOnScroll>
             pensada para generar valor real y una presencia digital potente.
           </p>
 
@@ -180,7 +179,7 @@ function DetalleProyecto() {
             )}
           </div>
         </div>
-      </section>
+      </RevealOnScroll>
       <ModalImagen
         abierto={modalImagenAbierta}
         imagen={urlImagen}
