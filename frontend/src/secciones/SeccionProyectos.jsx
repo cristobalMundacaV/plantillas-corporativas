@@ -81,10 +81,11 @@ function SeccionProyectos() {
               modules={[Navigation, Pagination]}
               navigation
               loop={puedeUsarLoop}
-              loopedSlides={1}
-              loopAdditionalSlides={1}
+              loopedSlides={proyectos.length}
+              loopAdditionalSlides={proyectos.length}
               centeredSlides={false}
               pagination={{ clickable: true }}
+              slidesPerGroup={1}
               spaceBetween={20}
               slidesPerView={usaAnchoCompleto ? 'auto' : 1}
               breakpoints={
