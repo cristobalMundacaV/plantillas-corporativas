@@ -105,7 +105,7 @@ function SeccionProyectos() {
                       },
                     }
               }
-              className="testimonios-swiper h-full pb-14"
+              className="servicios-swiper h-full pb-14"
             >
               {proyectos.map((proyecto) => (
                 <SwiperSlide
