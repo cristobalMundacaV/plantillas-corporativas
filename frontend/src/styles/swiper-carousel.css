@@ -47,6 +47,10 @@
   overflow: visible;
 }
 
+.swiper-carousel-full-width .swiper-wrapper {
+  justify-content: center;
+}
+
 .swiper-carousel-full-width .swiper-slide {
   transition: opacity 260ms ease, transform 260ms ease;
 }
