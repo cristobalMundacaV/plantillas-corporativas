@@ -30,12 +30,12 @@ function SeccionProyectos() {
       return;
     }
 
-    if (direccion === 'next') {
-      swiper.slideNext(500);
-      return;
-    }
+    const destino =
+      direccion === 'next'
+        ? (swiper.realIndex + 1) % proyectos.length
+        : (swiper.realIndex - 1 + proyectos.length) % proyectos.length;
 
-    swiper.slidePrev(500);
+    swiper.slideToLoop(destino, 500);
   };
 
   useEffect(() => {
