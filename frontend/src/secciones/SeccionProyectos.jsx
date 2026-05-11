@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import { Navigation, Pagination } from 'swiper/modules';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -78,17 +78,13 @@ function SeccionProyectos() {
             }
           >
             <Swiper
-              modules={[Navigation, Pagination, Autoplay]}
+              modules={[Navigation, Pagination]}
               navigation
               loop={puedeUsarLoop}
               loopedSlides={1}
               loopAdditionalSlides={1}
               centeredSlides={false}
               pagination={{ clickable: true }}
-              autoplay={{
-                delay: 5000,
-                disableOnInteraction: false,
-              }}
               spaceBetween={20}
               slidesPerView={usaAnchoCompleto ? 'auto' : 1}
               breakpoints={
