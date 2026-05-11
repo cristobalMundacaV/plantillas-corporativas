@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -18,8 +19,24 @@ function SeccionProyectos() {
   const [proyectos, setProyectos] = useState([]);
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState('');
+  const swiperRef = useRef(null);
   const puedeUsarLoop = proyectos.length > 1;
   const usaAnchoCompleto = proyectos.length > 3;
+
+  const irAProyecto = (direccion) => {
+    const swiper = swiperRef.current;
+
+    if (!swiper || proyectos.length <= 1) {
+      return;
+    }
+
+    const siguienteIndice =
+      direccion === 'next'
+        ? (swiper.realIndex + 1) % proyectos.length
+        : (swiper.realIndex - 1 + proyectos.length) % proyectos.length;
+
+    swiper.slideToLoop(siguienteIndice);
+  };
 
   useEffect(() => {
     const cargarProyectos = async () => {
@@ -77,9 +94,28 @@ function SeccionProyectos() {
                 : undefined
             }
           >
+            <div className="proyectos-swiper-controls">
+              <button
+                type="button"
+                onClick={() => irAProyecto('prev')}
+                className="carousel-nav-button carousel-nav-prev"
+                aria-label="Ver proyecto anterior"
+              >
+                <ChevronLeft className="h-5 w-5" />
+              </button>
+
+              <button
+                type="button"
+                onClick={() => irAProyecto('next')}
+                className="carousel-nav-button carousel-nav-next"
+                aria-label="Ver siguiente proyecto"
+              >
+                <ChevronRight className="h-5 w-5" />
+              </button>
+            </div>
+
             <Swiper
-              modules={[Navigation, Pagination]}
-              navigation
+              modules={[Pagination]}
               loop={puedeUsarLoop}
               loopedSlides={1}
               loopAdditionalSlides={1}
@@ -87,6 +123,9 @@ function SeccionProyectos() {
               pagination={{ clickable: true }}
               spaceBetween={20}
               slidesPerView={usaAnchoCompleto ? 'auto' : 1}
+              onSwiper={(swiper) => {
+                swiperRef.current = swiper;
+              }}
               breakpoints={
                 usaAnchoCompleto
                   ? undefined
