@@ -20,22 +20,28 @@ function SeccionProyectos() {
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState('');
   const swiperRef = useRef(null);
+  const animandoRef = useRef(false);
   const puedeUsarLoop = proyectos.length > 1;
   const usaAnchoCompleto = proyectos.length > 3;
 
   const irAProyecto = (direccion) => {
     const swiper = swiperRef.current;
 
-    if (!swiper || proyectos.length <= 1) {
+    if (!swiper || proyectos.length <= 1 || animandoRef.current) {
       return;
     }
 
-    const destino =
-      direccion === 'next'
-        ? (swiper.realIndex + 1) % proyectos.length
-        : (swiper.realIndex - 1 + proyectos.length) % proyectos.length;
+    animandoRef.current = true;
 
-    swiper.slideToLoop(destino, 500);
+    if (direccion === 'next') {
+      swiper.slideNext(500, false);
+    } else {
+      swiper.slidePrev(500, false);
+    }
+
+    setTimeout(() => {
+      animandoRef.current = false;
+    }, 500);
   };
 
   useEffect(() => {
