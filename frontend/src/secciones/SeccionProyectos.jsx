@@ -81,8 +81,8 @@ function SeccionProyectos() {
               modules={[Navigation, Pagination, Autoplay]}
               navigation
               loop={puedeUsarLoop}
-              loopedSlides={proyectos.length}
-              loopAdditionalSlides={proyectos.length}
+              loopedSlides={1}
+              loopAdditionalSlides={1}
               centeredSlides={false}
               pagination={{ clickable: true }}
               autoplay={{

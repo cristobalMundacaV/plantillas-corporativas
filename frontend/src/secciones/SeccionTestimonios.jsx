@@ -81,8 +81,8 @@ function SeccionTestimonios() {
               modules={[Navigation, Pagination, Autoplay]}
               navigation
               loop={puedeUsarLoop}
-              loopedSlides={testimonios.length}
-              loopAdditionalSlides={testimonios.length}
+              loopedSlides={1}
+              loopAdditionalSlides={1}
               centeredSlides={false}
               pagination={{ clickable: true }}
               autoplay={{

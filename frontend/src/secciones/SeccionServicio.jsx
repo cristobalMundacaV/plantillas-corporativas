@@ -65,8 +65,8 @@ function SeccionServicio() {
               modules={[Navigation, Pagination]}
               navigation
               loop={puedeUsarLoop}
-              loopedSlides={servicios.length}
-              loopAdditionalSlides={servicios.length}
+              loopedSlides={1}
+              loopAdditionalSlides={1}
               centeredSlides={false}
               pagination={{ clickable: true }}
               spaceBetween={20}
