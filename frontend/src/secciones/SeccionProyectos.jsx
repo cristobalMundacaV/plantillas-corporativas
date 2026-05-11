@@ -30,12 +30,12 @@ function SeccionProyectos() {
       return;
     }
 
-    const siguienteIndice =
-      direccion === 'next'
-        ? (swiper.realIndex + 1) % proyectos.length
-        : (swiper.realIndex - 1 + proyectos.length) % proyectos.length;
+    if (direccion === 'next') {
+      swiper.slideNext(500);
+      return;
+    }
 
-    swiper.slideToLoop(siguienteIndice);
+    swiper.slidePrev(500);
   };
 
   useEffect(() => {
@@ -120,6 +120,7 @@ function SeccionProyectos() {
               loopedSlides={1}
               loopAdditionalSlides={1}
               centeredSlides={false}
+              speed={500}
               pagination={{ clickable: true }}
               spaceBetween={20}
               slidesPerView={usaAnchoCompleto ? 'auto' : 1}
