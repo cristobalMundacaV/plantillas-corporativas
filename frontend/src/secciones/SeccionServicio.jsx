@@ -14,7 +14,7 @@ function SeccionServicio() {
   const [servicios, setServicios] = useState([]);
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState('');
-  const puedeRebobinar = servicios.length > 1;
+  const puedeUsarLoop = servicios.length > 1;
   const usaAnchoCompleto = servicios.length > 3;
 
   useEffect(() => {
@@ -64,7 +64,8 @@ function SeccionServicio() {
             <Swiper
               modules={[Navigation, Pagination]}
               navigation
-              rewind={puedeRebobinar}
+              loop={puedeUsarLoop}
+              loopAdditionalSlides={usaAnchoCompleto ? servicios.length : 0}
               pagination={{ clickable: true }}
               spaceBetween={20}
               slidesPerView={usaAnchoCompleto ? 'auto' : 1}

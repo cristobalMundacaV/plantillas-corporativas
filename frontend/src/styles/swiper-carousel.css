@@ -48,7 +48,7 @@
 }
 
 .swiper-carousel-full-width .swiper-wrapper {
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .swiper-carousel-full-width .swiper-slide {

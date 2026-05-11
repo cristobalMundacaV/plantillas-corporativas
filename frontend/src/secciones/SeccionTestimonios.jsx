@@ -18,7 +18,7 @@ function SeccionTestimonios() {
   const [testimonios, setTestimonios] = useState([]);
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState('');
-  const puedeRebobinar = testimonios.length > 1;
+  const puedeUsarLoop = testimonios.length > 1;
   const usaAnchoCompleto = testimonios.length > 3;
 
   useEffect(() => {
@@ -80,7 +80,8 @@ function SeccionTestimonios() {
             <Swiper
               modules={[Navigation, Pagination, Autoplay]}
               navigation
-              rewind={puedeRebobinar}
+              loop={puedeUsarLoop}
+              loopAdditionalSlides={usaAnchoCompleto ? testimonios.length : 0}
               pagination={{ clickable: true }}
               autoplay={{
                 delay: 5000,

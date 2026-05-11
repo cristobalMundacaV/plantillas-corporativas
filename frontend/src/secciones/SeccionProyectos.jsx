@@ -18,7 +18,7 @@ function SeccionProyectos() {
   const [proyectos, setProyectos] = useState([]);
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState('');
-  const puedeRebobinar = proyectos.length > 1;
+  const puedeUsarLoop = proyectos.length > 1;
   const usaAnchoCompleto = proyectos.length > 3;
 
   useEffect(() => {
@@ -80,7 +80,8 @@ function SeccionProyectos() {
             <Swiper
               modules={[Navigation, Pagination, Autoplay]}
               navigation
-              rewind={puedeRebobinar}
+              loop={puedeUsarLoop}
+              loopAdditionalSlides={usaAnchoCompleto ? proyectos.length : 0}
               pagination={{ clickable: true }}
               autoplay={{
                 delay: 5000,
