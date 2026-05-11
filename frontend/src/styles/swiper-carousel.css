@@ -81,7 +81,7 @@
 
 .swiper-carousel-full-width .swiper-button-prev,
 .swiper-carousel-full-width .swiper-button-next {
-  z-index: 20;
+  z-index: 30;
 }
 
 .servicios-swiper .swiper-button-prev::after,
@@ -122,11 +122,11 @@
 }
 
 .swiper-carousel-full-width .swiper-button-prev {
-  left: calc((var(--carousel-side-space) / -2) - 22px);
+  left: 16px;
 }
 
 .swiper-carousel-full-width .swiper-button-next {
-  right: calc((var(--carousel-side-space) / -2) - 22px);
+  right: 16px;
 }
 
 .servicios-swiper .swiper-pagination,
